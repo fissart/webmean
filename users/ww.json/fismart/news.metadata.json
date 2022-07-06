@@ -1,1 +1,0 @@
-{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"fismart.news"}],"uuid":"e8213b1d60c34420af9e29627e5a5e8e"}
