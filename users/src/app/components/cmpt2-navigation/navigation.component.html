@@ -1,0 +1,185 @@
+<nav class="nav navbar smart-scroll navbar-expand-xl">
+    <div class="container-fluid">
+        <ng-container *ngIf="!authService.loggedIn(); else loggedInw">
+            <a class="navbar-brand my-3 text-light" routerLink="/">
+              <div class="12 d-flex">
+
+              <div class="px-3">
+                <img class="wrapperest12" src="/assets/esfap.png" alt="image">
+              </div>
+
+              <div class="col-md-3 d-none">
+
+                <div class="text-warning h3 p-0">
+                  ESFAP
+                </div>
+                <span class="text-light h6  p-0">
+                FELIPE GUAMÁN
+              </span>
+              <br>
+              <span class="text-light h6  p-0">
+              POMA DE AYALA
+            </span>
+            </div>
+              </div>
+
+            </a>
+        </ng-container>
+        <ng-container>
+            <a *ngIf="!isCollapsed" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation" class="navbar-brand p-0 text-light b-info " routerLink="/">
+                Fismart
+            </a>
+        </ng-container>
+        <ng-template #loggedInw>
+
+            <a *ngIf="photo" class="navbar-brand p-0" routerLink="/user/{{photo._id}}">
+                <img *ngIf="isCollapsed" [src]="apiUrl+'/'+ photo.foto" (error)="onImgError($event)" class="wrapperest10">
+            </a>
+
+        </ng-template>
+        <button class="navbar-toggler btn btn-light bg-warning shadow-none" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="navbarTogglerDemo02">
+            <mat-icon color='white' svgIcon="www" aria-hidden="false"></mat-icon>
+        </button>
+
+        <div class="collapse navbar-collapse  justify-content-end" id="navbarTogglerDemo02" [ngbCollapse]="isCollapsed">
+
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">NOSOTROS</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="/Cmpt14MVComponent">MISIÓN VISIÓN</a></li>
+                        <li><a class="dropdown-item" href="Cmpt15RHComponent">RESEÑA HISTÓRICA</a></li>
+                        <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle">DIRECTORIO</a>
+                            <ul class="dropdown-menuww">
+                                <a class="dropdown-item" href="/Cmpt16AUTORIDADESComponent">AUTORIDADES</a>
+                                <a class="dropdown-item" href="/Cmpt17ADMINISTRATIVOSComponent">ADMINISTRATIVOS</a>
+                                <a class="dropdown-item" href="/Cmpt18CONSEJOESTUDIANTILComponent">CONSEJO ESTUDIANTIL</a>
+                                <li class="dropdown-submenu  d-none"><a class="dropdown-item dropdown-toggle" href="#">Submenu 1</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Subsubmenu1</a></li>
+                                        <li><a class="dropdown-item" href="#">Subsubmenu1</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown-submenu d-none"><a class="dropdown-item dropdown-toggle" href="#">Submenu 2</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Subsubmenu2</a></li>
+                                        <li><a class="dropdown-item" href="#">Subsubmenu2</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">CARRERAS</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="/Cmpt19EDUCACIONComponent">EDUCACIÓN ARTÍSTICA</a></li>
+                        <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle">ARTISTA PROFESIONAL</a>
+                            <ul class="dropdown-menuw">
+                                <a class="dropdown-item" href="/Cmpt20APPComponent">PINTURA</a>
+                                <a class="dropdown-item" href="/Cmpt21APGComponent">GRABADO</a>
+                                <a class="dropdown-item" href="/Cmpt22APEComponent">ESCULTURA</a>
+                            </ul>
+                            <!--
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/Cmpt20APPComponent">PINTURA</a></li>
+                                <li><a class="dropdown-item" href="/Cmpt21APGComponent">GRABADO</a></li>
+                                <li><a class="dropdown-item" href="/Cmpt22APEComponent">ESCULTURA</a></li>
+
+                            </ul>
+                          -->
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">REPOSITORIO</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <li><a class="dropdown-item" href="/Cmpt24BIBLIOTECAComponent">BIBLIOTECA</a></li>
+                        <li><a class="dropdown-item" href="/Cmpt23TESISComponent">TESIS</a></li>
+                    </ul>
+                </li>
+
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ACADÉMICO</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <li><a class="dropdown-item" href="/Cmpt25ADMISIONComponent">ADMISION</a></li>
+                      <li><a class="dropdown-item" href="/Cmpt26PREComponent">PRE BELLAS ARTES</a></li>
+                      <li><a class="dropdown-item" href="/Cmpt27STDComponent">ESTUDIANTES</a></li>
+                      <li><a class="dropdown-item" href="/Cmpt28EGRESADOSComponent">EGRESADOS</a></li>
+                      <li><a class="dropdown-item" href="/Cmpt29EVENTOSComponent">EVENTOS</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">DOCUMENTOS</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <li><a class="dropdown-item" href="/Cmpt30DOCUMENTOSComponent">DOCUMENTOS INSTITUCIONALES</a></li>
+                          <li><a class="dropdown-item" href="/Cmpt30DOCUMENTOSComponent">OFICINAS INSTITUCIONALES</a></li>
+                      <li><a class="dropdown-item" href="/Cmpt31ORGANIGRAMAComponent">ORGANIGRAMA</a></li>
+                      <li><a class="dropdown-item" href="/Cmpt32CRONOGRAMAComponent">CRONOGRAMA</a></li>
+                      <li><a class="dropdown-item" href="/Cmpt33RECLAMOSComponent">RECLAMOS</a></li>
+                      <li><a class="dropdown-item" href="/Cmpt34PREGUNTASComponent">PREGUNTAS</a></li>
+                      <li><a class="dropdown-item" href="/Cmpt35MESADEPARTESComponent">MESA DE PARTES</a></li>
+                      <li><a class="dropdown-item" href="/Cmpt36HORARYComponent">HORARIO</a></li>
+                      <li><a class="dropdown-item" href="/Cmpt37SILABOSComponent">SILABOS</a></li>
+                      <li><a class="dropdown-item" href="/Cmpt38NOTASComponent">BOLETA DE NOTAS</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">OTROS ACCESOS</a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
+
+                    <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle">GALERIA</a>
+                        <ul class="dropdown-menuw">
+                            <a class="dropdown-item" href="/Cmpt20APPComponent">GALERIA DE IMAGENES</a>
+                            <a class="dropdown-item" href="/Cmpt21APGComponent">GALERIA DE VIDEOS</a>
+                            <a class="dropdown-item" href="/Cmpt22APEComponent">GALERIA 360</a>
+                        </ul>
+                    </li>
+                    <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle">IMAGEN</a>
+                        <ul class="dropdown-menuw">
+                            <a class="dropdown-item" href="/Cmpt20APPComponent">FAP STUDIOS TV</a>
+                            <a class="dropdown-item" href="/Cmpt21APGComponent">MULTIMEDIA DIGITAL</a>
+                            <a class="dropdown-item" href="/Cmpt22APEComponent">PROMOCION LABORAL</a>
+
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+                <ng-container *ngIf="!authService.loggedIn(); else loggedIn">
+                    <li class="nav-item">
+                        <a class="nav-link text-warning font-bold" routerLink="/login">INICIAR SESIÓN</a>
+                    </li>
+
+                </ng-container>
+                <ng-template #loggedIn>
+                    <li class="nav-item">
+                        <a class="nav-link text-warning" routerLink="/">PLATAFORMA</a>
+                    </li>
+                    <li *ngIf='idcurso' class="nav-item">
+                        <a class="nav-link" routerLink="/curso/{{idcurso}}">Curso</a>
+                    </li>
+                    <li *ngIf='idcurso' class="nav-item">
+                        <a class="nav-link" routerLink="/integers/{{idcurso}}">Estudiantes</a>
+                    </li>
+                    <span *ngIf="photo">
+
+                    <li *ngIf='photo.rol==2 || photo.rol==1' class="nav-item">
+                        <a class="nav-link" routerLink="/user">Docente</a>
+                    </li>
+                  </span>
+                    <li class="nav-item">
+                        <a class="nav-link" style="cursor: pointer;" (click)="authService.logout()">Cerrar sesión</a>
+                    </li>
+                </ng-template>
+
+            </ul>
+        </div>
+    </div>
+</nav>

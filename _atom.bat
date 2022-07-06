@@ -1,0 +1,3 @@
+@echo off
+atom /
+pause

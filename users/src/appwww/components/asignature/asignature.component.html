@@ -1,0 +1,135 @@
+<div Ngxheadroom data-classes='{"initial":"animated","pinned":"slideDown","unpinned":"slideUp"}' class="fixed-navbar">
+    <app-navigation></app-navigation>
+</div>
+
+<div class="py-5"></div>
+<!--modal contenido-->
+<ng-template #ww let-modal>
+    <div class="modal-body bg-succes">
+        <!--<markdown [data]="text" katex [katexOptions]="options"></markdown>-->
+        <ng-katex-html [html]="text"></ng-katex-html>
+        <img *ngIf="file.split('.').pop()=='png'||file.split('.').pop()=='jpg'||file.split('.').pop()=='jpeg'||file.split('.').pop()=='svg'" [src]="apiUrl+'/'+ file" class="img-fluid w-100" (error)="onImgError($event)">
+        <div class="border rounded">{{file}}</div>
+        <ngx-doc-viewer *ngIf="file.split('.').pop()=='doc'"
+        [url]="apiUrl+'/'+ file"
+        viewer="google"
+        style="width:100%;height:100vh;"
+        ></ngx-doc-viewer>
+
+        <ngx-doc-viewer *ngIf="file.split('.').pop()=='docx' || file.split('.').pop()=='pptx'|| file.split('.').pop()=='ptx' || file.split('.').pop()=='xlsx'|| file.split('.').pop()=='xls'"
+        [url]="apiUrl+'/'+ file"
+        viewer="google"
+        style="width:100%;height:800px;"
+        ></ngx-doc-viewer>
+        <ngx-extended-pdf-viewer    *ngIf="file.split('.').pop()=='pdf'"
+         [src]="apiUrl+'/'+ file"
+         [height]="'500px'"
+         ></ngx-extended-pdf-viewer>
+        <!--
+        <ng-katex-html [html]="text"></ng-katex-html><span [innerHTML]="outHtml" ></span>
+        -->
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-info shadow-none" (click)="modal.close()">Close</button>
+    </div>
+</ng-template>
+
+<!--modal item and subitem-->
+<ng-template #www let-modal>
+  <div class="modal-header bg-succes text-center">
+  {{text.substr(14,50)}}
+
+
+</div>
+   <div class="modal-body bg-succes">
+    <img *ngIf="text.split('.').pop()=='png'||text.split('.').pop()=='jpg'||text.split('.').pop()=='jpeg'||text.split('.').pop()=='svg'" [src]="apiUrl+'/'+ text" class="img-fluid w-100" (error)="onImgError($event)">
+
+    <ngx-doc-viewer *ngIf="text.split('.').pop()=='doc'"
+    [url]="apiUrl+'/'+ text"
+    viewer="google"
+    style="width:100%;height:100vh;"
+    ></ngx-doc-viewer>
+
+    <ngx-doc-viewer *ngIf="text.split('.').pop()=='docx' || text.split('.').pop()=='pptx'|| text.split('.').pop()=='ptx' || text.split('.').pop()=='xlsx'|| text.split('.').pop()=='xls'"
+    [url]="apiUrl+'/'+ text"
+    viewer="google"
+    style="width:100%;height:100vh;"
+    ></ngx-doc-viewer>
+
+    <ngx-extended-pdf-viewer    *ngIf="text.split('.').pop()=='pdf'"
+     [src]="apiUrl+'/'+ text"
+     [height]="'500px'"
+     ></ngx-extended-pdf-viewer>
+   </div>
+   <div class="modal-footer bg-succes">
+
+    <button class="btn btn-info shadow-none" (click)="modal.close()">Close</button>
+  </div>
+
+</ng-template>
+
+
+
+<div class="container mt-1">
+    <div class="row" *ngIf="!$any(photo); else main_content">
+        <h1>Loading...</h1>
+    </div>
+    <ng-template #main_content>
+
+        <div class="card border-0 p-2 justify-content-center align-items-center">
+            <div class="text-uppercase floatop h3  text-light rounded p-2">
+                {{photo.title}}
+            </div>
+            <img *ngIf="photo.img" [src]="apiUrl+'/'+ $any(photo).img" class="imgcurse" (error)="onImgError($event)" alt="No image">
+            <div class="mytest justify-content-center align-items-center">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button class="btn btn-info text-light card-photo" (click)="open1(ww, $any(photo).description,$any(photo).img)">Content</button>
+                <button *ngIf="photouser.rol==1 || photouser.rol==2" class="btn btn-light shadow-none card-photo" (click)="CreateSection(photo.user, photo._id)">Create unity</button>
+                <button *ngIf="photouser.rol==1 || photouser.rol==2" class="btn btn-info shadow-none card-photo" (click)="selectedCard(photo._id)">Edit curse</button>
+              </div>
+            </div>
+        </div>
+
+
+        <!--Unidades-->
+        <div class="row m-0 justify-content-center">
+            <div class="col-md-6 p-3" *ngFor="let photo of photo.unidades index as i">
+                <div class="card border-0 justify-content-center align-items-center p-3">
+                    <div class="h5 text-info">
+                        Unity {{i+1}}: {{photo.title}}
+                    </div>
+
+                    <button class="btn mx-1 card-photo" (click)="open1(ww, $any(photo).description, $any(photo)._id)">Abstrac</button>
+                    <div class='card border-0' *ngIf="photouser.rol==1 || photouser.rol==2">
+                        <button class="btn  mx-1 card-photo shadow-none" (click)="savetheme(photo._id)">Add theme
+                        </button>
+                        <button class="btn  mx-1 card-photo shadow-none" (click)="editunity(photo._id)">Edit unity
+                        </button>
+                        <button class="btn  mx-1 card-photo shadow-none" (click)="errasesection(photo._id, photo.temas.length)">Delete unity</button>
+                        <p class="d-none">{{photo.temas.length}}</p>
+                    </div>
+
+<div class="row justify-content-center  w-100">
+                    <div class="col-md-6 p-2" *ngFor="let subItem of photo['temas'] index as i">
+                        <div [ngClass]="[subItem.usertask.length==0 ? 'cardnew p-1 align-items-center':'cardnew_ p-1 align-items-center text-light']">
+                            <div class="h6 w-100">T{{i+1}}: {{subItem.title}}</div>
+                                <button [ngClass]="[subItem.usertask.length==0 ? 'btn card-photo shadow-none':'btn btn-outline-light card-photo shadow-none border-0']" (click)="open1(ww, $any(subItem).description, $any(subItem).img)">Teoría</button>
+                                <button [ngClass]="[subItem.usertask.length==0 ? 'btn card-photo shadow-none':'btn btn-outline-light card-photo shadow-none border-0']" (click)="open1(ww, $any(subItem).task, $any(subItem)._id)">Tarea</button>
+                                <button *ngIf="photouser.rol==1 || photouser.rol==2" class="btn card-photo shadow-none text-primary" (click)="errase(subItem._id,subItem.usertask.length)">Delete theme</button>
+                                <button *ngIf="photouser.rol==1 || photouser.rol==2" class="btn card-photo shadow-none text-primary" (click)="edittheme(subItem._id)">Edit theme</button>
+                                <button *ngIf="subItem.usertask.length==0 && subItem.time>DateNow" class="btn btn-info card-photo shadow-none mb-1" (click)="selectheme(subItem._id, photo._id)">Enviar tarea</button>
+                                <button *ngIf="subItem.usertask.length==1  && subItem.time>DateNow" class="btn btn-outline-info card-photo shadow-none border-0" (click)="updatetask(subItem.usertask[0]._id)">Editar tarea</button>
+                                <button *ngIf="subItem.usertask.length==1 && subItem.time>DateNow" class="btn card-photo btn-outline-light shadow-none border-0" (click)="deletetask(subItem.usertask[0]._id)">Eliminar tarea</button>
+                                <div class="card bg-info border d-none">{{subItem.time}}--{{subItem.usertask.length}}</div>
+                                <button *ngIf="subItem.usertask.length!==0" class="btn btn-light shadow-none card-photo mb-1" (click)="open1(ww, subItem.usertask[0].task, $any(subItem)._id)">Tarea entregada</button>
+                                <button *ngIf="subItem.usertask.length!==0 && subItem.usertask[0].archivo" class="btn btn-info shadow-none card-photo mb-1" (click)="open2(www, subItem.usertask[0].archivo)">Archivo</button>
+                                <p *ngIf="subItem.time<DateNow" class="margin-0 text-center bg-warning m-0 p-1 card">Venció la fecha de entrega {{subItem.time | date:'EEEE &starf; dd MMMM yyyy &starf;  hh:mm a' }}</p>
+                                <p *ngIf="subItem.time>DateNow" class="margin-0 bg-primary p-1 text-center m-0 card">Hasta--{{subItem.time | date:'EEEE &starf; dd MMMM yyyy &starf;  hh:mm a' }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</div>

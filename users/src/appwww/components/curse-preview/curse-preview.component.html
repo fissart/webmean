@@ -1,0 +1,56 @@
+<div Ngxheadroom data-classes='{"initial":"animated","pinned":"slideDown","unpinned":"slideUp"}' class="fixed-navbar">
+    <app-navigation></app-navigation>
+</div>
+
+<div class="py-5"></div>
+<div class="row" *ngIf="!$any(photo); else main_content">
+    <h1>Loading...</h1>
+</div>
+<ng-template #main_content>
+    <div class="container">
+        <form class="card-body p-3" (submit)="updatePhoto(title, description)">
+            <div class="row p-0">
+                <div class="form-group mb-3 d-none">
+                    <label for="exampleFormControlInput1" class="form-label">id</label>
+                    <input type="text" class="form-control" placeholder="Photo's Title" [value]="$any(photo)._id">
+                </div>
+                <div class="form-group mb-3" *ngIf="$any(photo).curse">
+                    <label for="exampleFormControlInput1" class="form-label">idcurso</label>
+                    <input type="text" class="form-control" placeholder="Photo's Title" [value]="$any(photo).curse">
+                </div>
+                <div class="form-group mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Título</label>
+                    <input type="text" class="form-control" placeholder="Photo's Title" [value]="$any(photo).title" #title>
+                </div>
+
+                <label for="exampleFormControlInput1" class="form-label">Descripción</label>
+                <div class="form-group mb-3 col-md-5">
+                    <textarea rows="10" cols="0" class="variable-textarea form-control" [(ngModel)]="markdown"     [ngModelOptions]="{standalone:true}" [value]="$any(photo).description" #description></textarea>
+                </div>
+                <div class="form-group mb-3 col-md-7">
+                    <!--<markdown ngPreserveWhitespaces class="variable-binding" [data]="markdown" katex [katexOptions]="options">
+                        {{$any(photo).description}}
+                    </markdown>
+                  -->
+                  <ng-katex-html [html]="markdown"></ng-katex-html>
+                </div>
+            </div>
+            <div class="d-grid gap-1">
+                <input type="file" accept="image/*" class="d-none" (change)="capturandoFile($event)" #photoInput>
+                <div class="row" *ngIf="!$any(photo).img; else www">
+                    <h1>Loading...</h1>
+                </div>
+                <ng-template #www>
+                    <img [src]="photoSelected || apiUrl+'/'+ $any(photo).img" class="m-auto w-25 img-fluid" (error)="onImgError($event)" alt="No image" (click)="photoInput.click()">
+                </ng-template>
+
+                <mat-progress-bar *ngIf="value > 0" color="accent" mode="determinate" [value]="value"></mat-progress-bar>
+
+                <button class="btn btn-info mt-1 fixed-bottom position-relative" [disabled]="loading">{{ loading=='false' ? 'Cargando '+value+'%':
+                'Actualizar'}}</button>
+            </div>
+
+        </form>
+
+    </div>
+</ng-template>

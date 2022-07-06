@@ -1,0 +1,114 @@
+<div Ngxheadroom data-classes='{"initial":"animated","pinned":"slideDown","unpinned":"slideUp"}' class="fixed-navbar">
+    <app-navigation></app-navigation>
+</div>
+
+<div class="py-5"></div>
+<ng-template #ww let-modal>
+    <div class="modal-body bg-succes">
+        <!-- <markdown [data]="text" katex [katexOptions]="options"></markdown> -->
+        <ng-katex-html [html]="text"></ng-katex-html>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-info shadow-none" (click)="modal.close()">Close</button>
+    </div>
+</ng-template>
+
+<ng-template #www let-modal>
+    <div class="modal-body p-1">
+        <ng-katex-html [html]="text"></ng-katex-html>
+      <img *ngIf="text.split('.').pop()=='png'||text.split('.').pop()=='jpg'||text.split('.').pop()=='jpeg'||text.split('.').pop()=='svg'" [src]="apiUrl+'/'+ text" class="img-fluid w-100" (error)="onImgError($event)">
+
+      <ngx-doc-viewer *ngIf="text.split('.').pop()=='doc'"
+      [url]="apiUrl+'/'+ text"
+      viewer="google"
+      style="width:100%;height:100vh;"
+      ></ngx-doc-viewer>
+
+      <ngx-doc-viewer *ngIf="text.split('.').pop()=='docx' || text.split('.').pop()=='pptx'|| text.split('.').pop()=='ptx' || text.split('.').pop()=='xlsx'|| text.split('.').pop()=='xls'"
+      [url]="apiUrl+'/'+ text"
+      viewer="google"
+      style="width:100%;height:100vh;"
+      ></ngx-doc-viewer>
+
+      <ngx-extended-pdf-viewer *ngIf="text.split('.').pop()=='pdf'"
+       [src]="apiUrl+'/'+ text"
+       style="width:100%;height:100vh;"
+       ></ngx-extended-pdf-viewer>
+
+
+</div>
+    <div class="modal-footer p-1">
+        <button class="btn btn-success shadow-none" (click)="modal.close()">Close</button>
+    </div>
+</ng-template>
+
+<ng-template #w let-modal>
+      <div class="modal-body">
+        <form (submit)="updatenote(idtask, task, note)">
+            <div class="form-group mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Calificación</label>
+                <input type="text" class="form-control shadow-none" [value]="textt" #note>
+                <input type="text" class="form-control shadow-none d-none" [value]="text" #idtask>
+              </div>
+              <div class="form-group mb-3">
+                <div class="row mx-1">
+                    <div class="col-md-5 p-0">
+                        <textarea rows="10" class="variable-textarea form-control" [(ngModel)]="markdown" [ngModelOptions]="{standalone:true}" #task></textarea>
+                    </div>
+                    <div class="col-md-7">
+                        <!--<markdown class="variable-binding" [data]="markdown" katex [katexOptions]="options">
+                        </markdown>
+                      -->
+                        <ng-katex-html [html]="markdown"></ng-katex-html>
+                    </div>
+                  </div>
+                </div>
+                <button class="btn btn-info shadow-none d-none" #www>Close</button>
+              </form>
+              </div>
+        <div class="modal-footer">
+            <button class="btn btn-info mt-1" [disabled]="loading" (click)="www.click()">{{ loading=='false' ? 'Cargando':
+                'Calificar'}}</button>
+        </div>
+</ng-template>
+
+<div class="container mt-1">
+    <div class="row" *ngIf="!$any(photo); else main_content">
+        <h1>Loading...</h1>
+    </div>
+    <ng-template #main_content>
+        <!--Unidades-->
+        <div class="row m-0 justify-content-center">
+            <div class="col-md-6 p-3" *ngFor="let photo of photo index as i">
+                <div class="card border-0 p-3 justify-content-center align-items-center">
+                    <div class="h5">
+                        Módulo {{i+1}}: {{photo.title}}
+                    </div>
+
+                    <button class="btn  mx-1 card-photo" (click)="open1(ww, $any(photo).description)">Contenido</button>
+                    <div class="row justify-content-center  w-100">
+
+                        <div class="col-md-6 p-2" *ngFor="let subItem of photo['temas'] index as i">
+                            <div [ngClass]="[subItem.usertask.length==0 ? 'cardnew border-0 p-3':'cardnew_ p-3']" class="justify-content-center align-items-center">
+                                <div class="h6 text-warning">T{{i+1}}: {{subItem.title}}</div>
+
+                                <button class="btn card-photo" (click)="open1(ww, $any(subItem).description)">Teoría</button>
+                                <button class="btn shadow-none card-photo" (click)="open1(ww, $any(subItem).task)">Tarea asignada</button>
+                                <button *ngIf="subItem.usertask.length!==0" class="btn btn-warning card-photo shadow-none" (click)="open1(ww, subItem.usertask[0].task)">Tarea entregada</button>
+                                <button *ngIf="subItem.usertask.length==1 && $any(user)._id==iduserlocal" class="btn btn-light card-photo shadow-none" (click)="updatetask(subItem.usertask[0]._id)">Editar tarea</button>
+                                <button *ngIf="subItem.usertask.length!==0 && subItem.usertask[0].archivo" class="btn btn-warning shadow-none card-photo " (click)="open2(www, subItem.usertask[0].archivo)">Archivo</button>
+
+                                    <div *ngFor="let www of subItem['usertask'] index as i">
+                                        <div class="text-center text-light" *ngIf="$any(www).note">Nota {{www.note}}</div>
+                                        <div *ngIf="$any(user).rol==1 || $any(user).rol==2 && $any(subItem).usertask.length==1">
+                                        <button class="btn btn-warning" (click)="open(w, www._id, www.task , www.note)">Nota {{www.note}}</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</div>

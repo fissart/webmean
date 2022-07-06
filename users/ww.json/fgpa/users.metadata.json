@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"fgpa.users"}],"uuid":"ed4a17096c9e48629439e6ed92657082"}

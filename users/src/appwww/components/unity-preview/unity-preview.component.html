@@ -1,0 +1,72 @@
+<div Ngxheadroom data-tolerance="5" data-offset="100" data-classes='{"initial":"animated","pinned":"slideDown","unpinned":"slideUp"}' class="fixed-navbar">
+    <app-navigation></app-navigation>
+</div>
+<div class="py-5 border bg-info"></div>
+
+<form class="container p-3" (submit)="updateUnity(id, title, description, task, test , time, timeex)">
+    <div class="row p-0">
+
+        <div class="form-group d-none">
+            <label for="exampleFormControlInput1" class="form-label">Titulo</label>
+            <input type="text" class="form-control" placeholder="Photo's Title" #id [value]="photo._id">
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Titulo</label>
+            <input type="text" class="form-control" placeholder="Photo's Title" #title [value]="photo.title">
+        </div>
+
+        <div class="form-group mb-3 ">
+            <label for="exampleFormControlInput1" class="form-label">Descripción</label>
+            <div class="row mx-1">
+                <div class="col-md-5 p-0">
+                    <textarea rows="5" cols="0" class="variable-textarea form-control" [(ngModel)]="markdown" [ngModelOptions]="{standalone:true}" [value]="$any(photo).description" #description></textarea>
+                </div>
+                <div class="form-group mb-3 col-md-7">
+                    <!-- <markdown class="variable-binding" [data]="markdown" katex [katexOptions]="options">
+                  </markdown>
+
+                <ng-katex-html [html]="markdown">www </ng-katex-html>
+              -->
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group mb-3">
+
+            <label for="exampleFormControlInput1" class="form-label">Tarea</label>
+            <div class="row mx-1">
+                <div class="col-md-5 p-0">
+                    <textarea rows="5" class="variable-textarea form-control" [(ngModel)]="markdown2" [ngModelOptions]="{standalone:true}" #task [value]="photo.task"></textarea>
+                </div>
+                <div class="col-md-7 rounded ">
+                    <!-- <markdown class="variable-binding" [data]="markdown2" katex [katexOptions]="options">
+                    </markdown> -->
+                </div>
+            </div>
+        </div>
+        <div class="form-group mb-3">
+
+            <label for="exampleFormControlInput1" class="form-label">Test</label>
+            <div class="row mx-1">
+                <div class="col-md-5 p-0">
+                    <textarea rows="5" class="variable-textarea form-control" [(ngModel)]="markdown3" [ngModelOptions]="{standalone:true}" #test [value]="photo.test"></textarea>
+                </div>
+                <div class="col-md-7 rounded ">
+                    <!-- <markdown class="variable-binding" [data]="markdown3" katex [katexOptions]="options">
+                    </markdown> -->
+                </div>
+            </div>
+        </div>
+        <div class="form-group mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Fecha de entrega tarea</label>
+            <input type="date" class="form-control" #time [value]="photo.time">
+        </div>
+        <div class="form-group mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Tiempo examen</label>
+            <input type="text" class="form-control" placeholder="Photo's Title" #timeex [value]="photo.timeex">
+        </div>
+    </div>
+    <button class="btn btn-info shadow-none">Update</button>
+</form>

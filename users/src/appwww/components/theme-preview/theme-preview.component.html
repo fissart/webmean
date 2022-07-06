@@ -1,0 +1,77 @@
+<div Ngxheadroom data-tolerance="5" data-offset="100" data-classes='{"initial":"animated","pinned":"slideDown","unpinned":"slideUp"}' class="fixed-navbar">
+    <app-navigation></app-navigation>
+</div>
+<div class="py-5 border bg-info"></div>
+<form class="container p-3" (submit)="updatetheme(title, description, task, time)">
+    <div class="row p-0">
+
+        <div class="form-group mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Titulo</label>
+            <input type="text" class="form-control" placeholder="Photo's Title" #title [value]="photo.title">
+        </div>
+
+        <div class="form-group mb-3 ">
+            <label for="exampleFormControlInput1" class="form-label">Descripción</label>
+            <div class="row mx-1">
+                <div class="col-md-5 p-0">
+                    <textarea rows="5" cols="0" class="variable-textarea form-control" [(ngModel)]="markdown" [ngModelOptions]="{standalone:true}" [value]="$any(photo).description" #description></textarea>
+                </div>
+                <div class="form-group mb-3 col-md-7">
+                  <ng-katex-html [html]="markdown"></ng-katex-html>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group mb-3">
+
+            <label for="exampleFormControlInput1" class="form-label">Tarea</label>
+            <div class="row mx-1">
+                <div class="col-md-5 p-0">
+                    <textarea rows="5" class="variable-textarea form-control" [(ngModel)]="markdown2" [ngModelOptions]="{standalone:true}" #task [value]="photo.task"></textarea>
+                </div>
+                <div class="col-md-7 rounded">
+                  <ng-katex-html [html]="markdown2"></ng-katex-html>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Fecha de entrega</label>
+            <input type="datetime-local" class="form-control" #time [value] ="photo.time | date:'yyyy-MM-ddThh:mm'">
+        </div>
+
+    </div>
+    <input type="file" class="d-none" (change)="capturandoFile($event)" #photoInput>
+            <img [src]="photoSelected || apiUrl+'/'+ $any(photo).img" class="m-auto w-25 cursorpoint img-fluid" (error)="onImgError($event)" alt="No image" (click)="photoInput.click()">
+
+    <div *ngIf="!photoSelected" class="bg-light text-center border rounded">
+        {{photo.img}}
+    </div>
+    <div *ngIf="photoSelected" class="bg-light text-center border rounded">
+        {{name}}
+    </div>
+
+    <ngx-extended-pdf-viewer *ngIf="photoSelected && type=='application/pdf'"
+    [src]="photoSelected"
+    [height]="'1000px'"
+    [useBrowserLocale]="false"
+    [textLayer]="true"
+    [showHandToolButton]="true">
+</ngx-extended-pdf-viewer>
+
+    <ngx-extended-pdf-viewer *ngIf="!photoSelected && photo.img && photo.img.split('.').pop()=='pdf'"
+    [src]="apiUrl+'/'+ photo.img"
+    [height]="'800px'"
+    [useBrowserLocale]="false"
+    [textLayer]="true"
+    [showHandToolButton]="false">
+</ngx-extended-pdf-viewer>
+
+<mat-progress-bar *ngIf="value > 0" color="accent" mode="determinate" [value]="value"></mat-progress-bar>
+
+<button class="btn btn-info mt-1" [disabled]="loading">{{ loading=='false' ? 'Cargando '+value+'%':
+'Actualizar'}}</button>
+
+    <button class="btn btn-info shadow-none d-none">Update</button>
+</form>

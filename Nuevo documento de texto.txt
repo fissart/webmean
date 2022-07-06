@@ -1,0 +1,113 @@
+
+...
+ng g c cmpt37-SILABOS
+ng g c cmpt38-NOTAS
+
+...
+ng g s svc37-SILABOS
+ng g s svc38-NOTAS
+
+
+...
+New-Item -itemtype file 30_SILABOS.ts
+New-Item -itemtype file 31_NOTAS.ts
+
+...
+New-Item -itemtype file 30_SILABOS.controller.ts
+New-Item -itemtype file 31_NOTAS.controller.ts
+
+...
+New-Item -itemtype file 30_SILABOS.route.ts
+New-Item -itemtype file 31_NOTAS.route.ts
+ 
+
+"wwwwwwwwwwww" > rh.ts 
+"wwwwwwwwwwww" >> www.ts
+
+import { Schema, model, Document } from 'mongoose'
+const schema = new Schema({
+    title: String,
+    description: String,
+    file: String,
+    user: String,
+},{
+    timestamps: true
+});
+export interface ILand extends Document {
+    title: string,
+    description: string,
+    file: string,
+    user: string,
+}
+export default model<ILand>('Land', schema);
+
+
+echo "import { Request, Response } from 'express'
+import fs from 'fs-extra';
+import path from 'path'
+// Models
+import User, { ILand } from '../1.models/7_land';
+
+//createController/////////////////////////////////////////////////////////////////////////
+export async function createController(req: Request, res: Response): Promise<Response> {
+    const { title, description, user } = req.body;
+    //console.log(req.body);
+    const newDate = { title, description, user};
+    const data = new User(newDate);
+    await data.save();
+    return res.json({
+        data
+    });
+};
+
+//getsController/////////////////////////////////////////////////////////////////////////
+export async function getsController(req: Request, res: Response): Promise<Response> {
+    const Document = await User.find();
+    return res.json(Document);
+}
+
+//getupdateController/////////////////////////////////////////////////////////////////////////
+export async function getupdateController(req: Request, res: Response): Promise<Response> {
+    const { id } = req.params;
+    const Document = await User.findById(id);
+    return res.json(Document);
+}
+
+//deleteController/////////////////////////////////////////////////////////////////////////
+export async function deleteController(req: Request, res: Response): Promise<Response> {
+    const { ObjectId } = require("mongodb");
+    const id = ObjectId(req.params.id);
+
+    const File = await User.findByIdAndRemove(id) as ILand;
+    if (File) {
+        try {
+            await fs.unlink(path.resolve(File.file));
+        } catch (err) {
+            console.error(err);
+        }
+    }
+    return res.json({ message: 'Ok remove' });
+};
+
+//updateController/////////////////////////////////////////////////////////////////////////
+export async function updateController(req: Request, res: Response): Promise<Response> {
+    const { id } = req.params;
+    const {  title, description } = req.body;
+    const updatedCurse = "";
+    if (req.file) {
+        const File = await User.findById(id) as ILand;
+        if (File) {
+            try {
+                await fs.unlink(path.resolve(File.file));
+            } catch (err) {
+                console.error(err);
+            }
+        }
+        const updatedCurse = await User.findByIdAndUpdate(id, { title, description, foto: req.file.path });
+    } else {
+        const updatedCurse = await User.findByIdAndUpdate(id, { title, description  });
+    }
+    return res.json({
+        message: 'Successfully updated'
+    });
+}" > rh.ts
