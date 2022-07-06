@@ -1,3 +1,10 @@
+uploads:
+books
+collections
+curse
+new
+thesis
+user
 
 ...
 ng g c cmpt37-SILABOS
