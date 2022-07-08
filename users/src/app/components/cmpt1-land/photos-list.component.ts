@@ -148,6 +148,119 @@ name: string = ""
 	.st0{fill-rule:evenodd;clip-rule:evenodd;}
 ]]></style><g><path class="st0" d="M111.89,75.94l-6.59,6.59c-1.73,1.73-4.58,1.73-6.31,0l-5.31-5.31c-2.74,1.46-5.68,2.58-8.78,3.3v6.88 c0,2.45-2.01,4.46-4.46,4.46h-9.32c-2.45,0-4.46-2.01-4.46-4.46v-7.51c-3.04-0.92-5.91-2.23-8.54-3.89l-4.87,4.87 c-1.73,1.73-4.58,1.73-6.31,0l-2.98-2.97l0.08-0.09l13.07-14.96c4.78,5.6,11.9,9.16,19.84,9.16c14.4,0,26.08-11.68,26.08-26.07l0,0 l0,0c0-14.4-11.68-26.08-26.08-26.08c-7.21,0-13.74,2.93-18.46,7.66l-4.81-0.18L41.51,16.5c0.15-0.21,0.31-0.4,0.49-0.59l6.59-6.59 c1.73-1.73,4.58-1.73,6.31,0l5.31,5.31c2.74-1.47,5.68-2.59,8.78-3.3V4.45C69.01,2.01,71.02,0,73.47,0h9.31 c2.45,0,4.46,2.01,4.46,4.46l0,7.51c3.04,0.92,5.91,2.24,8.54,3.89l4.87-4.87c1.73-1.73,4.58-1.73,6.31,0l6.59,6.59 c1.73,1.73,1.73,4.58,0,6.31l-5.31,5.31c1.47,2.74,2.59,5.68,3.3,8.78h6.88c2.44,0,4.46,2.01,4.46,4.46v9.32 c0,2.45-2.01,4.46-4.46,4.46h-7.5c-0.92,3.04-2.23,5.91-3.89,8.54l4.87,4.87C113.63,71.36,113.63,74.2,111.89,75.94L111.89,75.94 L111.89,75.94L111.89,75.94L111.89,75.94z M77.03,37.46c4.68,0,8.47,3.79,8.47,8.47c0,4.68-3.79,8.47-8.47,8.47 c-4.68,0-8.47-3.79-8.47-8.47C68.56,41.25,72.36,37.46,77.03,37.46L77.03,37.46z M60.14,45.41L37.13,71.76L36.36,59.4 C20.63,57.15,8.58,61.47,0,73.87c0.1-24.4,15.96-37.16,34.82-39.12l-0.79-12.61L60.14,45.41L60.14,45.41L60.14,45.41L60.14,45.41 L60.14,45.41L60.14,45.41z"/></g></svg>
 `));
+
+iconRegistry.addSvgIconLiteral('instagram', sanitizer.bypassSecurityTrustHtml(`
+  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+  	 viewBox="0 0 551.034 551.034" style="enable-background:new 0 0 551.034 551.034;" xml:space="preserve">
+  <g id="XMLID_13_">
+
+  		<linearGradient id="XMLID_2_" gradientUnits="userSpaceOnUse" x1="275.517" y1="4.5714" x2="275.517" y2="549.7202" gradientTransform="matrix(1 0 0 -1 0 554)">
+  		<stop  offset="0" style="stop-color:#E09B3D"/>
+  		<stop  offset="0.3" style="stop-color:#C74C4D"/>
+  		<stop  offset="0.6" style="stop-color:#C21975"/>
+  		<stop  offset="1" style="stop-color:#7024C4"/>
+  	</linearGradient>
+  	<path id="XMLID_17_" style="fill:url(#XMLID_2_);" d="M386.878,0H164.156C73.64,0,0,73.64,0,164.156v222.722
+  		c0,90.516,73.64,164.156,164.156,164.156h222.722c90.516,0,164.156-73.64,164.156-164.156V164.156
+  		C551.033,73.64,477.393,0,386.878,0z M495.6,386.878c0,60.045-48.677,108.722-108.722,108.722H164.156
+  		c-60.045,0-108.722-48.677-108.722-108.722V164.156c0-60.046,48.677-108.722,108.722-108.722h222.722
+  		c60.045,0,108.722,48.676,108.722,108.722L495.6,386.878L495.6,386.878z"/>
+
+  		<linearGradient id="XMLID_3_" gradientUnits="userSpaceOnUse" x1="275.517" y1="4.5714" x2="275.517" y2="549.7202" gradientTransform="matrix(1 0 0 -1 0 554)">
+  		<stop  offset="0" style="stop-color:#E09B3D"/>
+  		<stop  offset="0.3" style="stop-color:#C74C4D"/>
+  		<stop  offset="0.6" style="stop-color:#C21975"/>
+  		<stop  offset="1" style="stop-color:#7024C4"/>
+  	</linearGradient>
+  	<path id="XMLID_81_" style="fill:url(#XMLID_3_);" d="M275.517,133C196.933,133,133,196.933,133,275.516
+  		s63.933,142.517,142.517,142.517S418.034,354.1,418.034,275.516S354.101,133,275.517,133z M275.517,362.6
+  		c-48.095,0-87.083-38.988-87.083-87.083s38.989-87.083,87.083-87.083c48.095,0,87.083,38.988,87.083,87.083
+  		C362.6,323.611,323.611,362.6,275.517,362.6z"/>
+
+  		<linearGradient id="XMLID_4_" gradientUnits="userSpaceOnUse" x1="418.306" y1="4.5714" x2="418.306" y2="549.7202" gradientTransform="matrix(1 0 0 -1 0 554)">
+  		<stop  offset="0" style="stop-color:#E09B3D"/>
+  		<stop  offset="0.3" style="stop-color:#C74C4D"/>
+  		<stop  offset="0.6" style="stop-color:#C21975"/>
+  		<stop  offset="1" style="stop-color:#7024C4"/>
+  	</linearGradient>
+  	<circle id="XMLID_83_" style="fill:url(#XMLID_4_);" cx="418.306" cy="134.072" r="34.149"/>
+  </g>
+  <g>
+  </g>
+  <g>
+  </g>
+  <g>
+  </g>
+  <g>
+  </g>
+  <g>
+  </g>
+  <g>
+  </g>
+  <g>
+  </g>
+  <g>
+  </g>
+  <g>
+  </g>
+  <g>
+  </g>
+  <g>
+  </g>
+  <g>
+  </g>
+  <g>
+  </g>
+  <g>
+  </g>
+  <g>
+  </g>
+  </svg>
+
+`));
+
+                iconRegistry.addSvgIconLiteral('youtube', sanitizer.bypassSecurityTrustHtml(`
+                  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                  	 viewBox="0 0 461.001 461.001" style="enable-background:new 0 0 461.001 461.001;" xml:space="preserve">
+                  <g>
+                  	<path style="fill:#F61C0D;" d="M365.257,67.393H95.744C42.866,67.393,0,110.259,0,163.137v134.728
+                  		c0,52.878,42.866,95.744,95.744,95.744h269.513c52.878,0,95.744-42.866,95.744-95.744V163.137
+                  		C461.001,110.259,418.135,67.393,365.257,67.393z M300.506,237.056l-126.06,60.123c-3.359,1.602-7.239-0.847-7.239-4.568V168.607
+                  		c0-3.774,3.982-6.22,7.348-4.514l126.06,63.881C304.363,229.873,304.298,235.248,300.506,237.056z"/>
+                  </g>
+                  <g>
+                  </g>
+                  <g>
+                  </g>
+                  <g>
+                  </g>
+                  <g>
+                  </g>
+                  <g>
+                  </g>
+                  <g>
+                  </g>
+                  <g>
+                  </g>
+                  <g>
+                  </g>
+                  <g>
+                  </g>
+                  <g>
+                  </g>
+                  <g>
+                  </g>
+                  <g>
+                  </g>
+                  <g>
+                  </g>
+                  <g>
+                  </g>
+                  <g>
+                  </g>
+                  </svg>
+`));
+
         iconRegistry.addSvgIconLiteral('getout', sanitizer.bypassSecurityTrustHtml(`
 <svg
    version="1.1"
@@ -504,4 +617,3 @@ getnews(){
         moveItemInArray(this.photointeger, event.previousIndex, event.currentIndex);
     }
 }
-  

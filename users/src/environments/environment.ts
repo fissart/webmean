@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   title: 'Local Environment Heading',
-  //apiURL:  'http://169.197.183.189:8000'
-  apiURL: 'http://localhost:8000'
+  //apiURL: 'http://localhost:8000'
+  apiURL:  'http://169.197.183.189:8000'
 
 };
 
