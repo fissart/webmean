@@ -6,7 +6,7 @@ import {
 import { Router } from '@angular/router'
 import { environment } from '../../../environments/environment';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-
+import {Title} from '@angular/platform-browser'
 import { CurseService } from '../../services/curse.service'
 import { UsersService } from '../../services/users.service'
 import { DomSanitizer } from '@angular/platform-browser';
@@ -95,6 +95,7 @@ name: string = ""
         private CurseService: CurseService,
         private UserService: UsersService,
         private router: Router,
+        private Tw: Title,
         private modal: NgbModal,
         iconRegistry: MatIconRegistry, sanitizer: DomSanitizer,
 
@@ -413,7 +414,6 @@ getintegersuser()
             (res: any) => {
                 this.photointeger = res;
                 console.log(res);
-
             },
             err => console.log(err)
         )
@@ -455,8 +455,10 @@ getnews(){
   }
 
     ngOnInit() {
+      this.gets_news();
 
-        this.gets_news();
+        this.Tw.setTitle('this.photointeger[0].userw[0].name');
+
         this.getintegersuser();
         localStorage.removeItem('idcurso');
         this.CurseService.getPhotosUser(localStorage.getItem('id') || "").subscribe(
