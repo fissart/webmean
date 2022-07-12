@@ -30,10 +30,10 @@
     <div class="d-grid gap-1">
                 <input type="file" class="d-none" (change)="capturandoFile($event)" #photoInput>
 
-                        <img [src]="photoSelected || apiUrl+'/'+ $any(photo).archivo" class="m-auto w-25 cursorpoint img-fluid" (error)="onImgError($event)" alt="No image" (click)="photoInput.click()">
+                        <img [src]="photoSelected || apiUrl+'/'+ $any(photo).img" class="m-auto w-25 cursorpoint img-fluid" (error)="onImgError($event)" alt="No image" (click)="photoInput.click()">
 
                 <div *ngIf="!photoSelected" class="bg-light text-center border rounded">
-                    {{photo.archivo}}
+                    {{photo.img}}
                 </div>
                 <div *ngIf="photoSelected" class="bg-light text-center border rounded">
                     {{name}}
@@ -47,8 +47,8 @@
                 [showHandToolButton]="true">
             </ngx-extended-pdf-viewer>
 
-                <ngx-extended-pdf-viewer *ngIf="!photoSelected && photo.archivo && photo.archivo.split('.').pop()=='pdf'"
-                [src]="apiUrl+'/'+ photo.archivo"
+                <ngx-extended-pdf-viewer *ngIf="!photoSelected && photo.img && photo.img.split('.').pop()=='pdf'"
+                [src]="apiUrl+'/'+ photo.img"
                 [height]="'800px '"
                 [useBrowserLocale]="false"
                 [textLayer]="true"

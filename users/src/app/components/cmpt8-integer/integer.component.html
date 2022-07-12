@@ -74,7 +74,7 @@
                     <div class="row d-flex justify-content-center m-1 p-0">
                       <div *ngFor="let ww of w['tasks'] index as i" [ngClass]="[ww.note ? ' col-md-4 col-lg-2 col-2 m-1 p-1':'col-md-4 col-lg-2 col-2 m-1 p-1']">
                         <span class="h6">&#10004;</span>
-                      <span *ngIf="ww.archivo" class="h6 text-warning">&starf; </span>
+                      <span *ngIf="ww.img" class="h6 text-warning">&starf; </span>
                       <span *ngIf="rol==1" class="card-photo text-light" (click)="deletetask($any(ww)._id)">
                         &starf;
                       </span>
@@ -96,10 +96,10 @@
 &#3065;                                        </button>
                                         <div class="row">
                                           <div *ngFor="let ww_ of wwwww['task'] index as i">
-                                              <span *ngIf="ww_.archivo" class="text-dark">&starf; {{ww_.archivo.split('.').pop()!}}</span>
+                                              <span *ngIf="ww_.img" class="text-dark">&starf; {{ww_.img.split('.').pop()!}}</span>
                                               <button *ngIf="rol==1" class="btn btn-warning m-0 p-0" (click)="deletetask($any(ww_)._id)"> x </button>
                                               {{ww_.note}}
-                                              <button class="btn btn-info p-0" (click)="openwww(new, ww_.task, ww_.archivo, ww.title, wwwww.title)">
+                                              <button class="btn btn-info p-0" (click)="openwww(new, ww_.task, ww_.img, ww.title, wwwww.title)">
                                                &#x2766;
                                               </button>
                                               <input *ngIf="rol==1 || rol==2" type="text" class="form-control p-1"  [value]="ww_.note" (blur)="onBlurMethod($event, ww_._id, ww_.task)">

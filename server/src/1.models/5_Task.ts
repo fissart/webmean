@@ -2,7 +2,7 @@ import { timeStamp } from 'console';
 import { Schema, model, Document } from 'mongoose'
 
 const schema = new Schema({
-  archivo: String,
+  img: String,
   task: String,
   note: String,
   theme: {
@@ -20,7 +20,7 @@ const schema = new Schema({
 });
 
 export interface ITask extends Document {
-  archivo: string,
+  img: string,
   task: string,
   note: string,
   theme: {

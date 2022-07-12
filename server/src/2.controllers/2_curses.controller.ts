@@ -2,12 +2,14 @@ import { Request, Response } from 'express'
 import fs from 'fs-extra';
 import path from 'path'
 
+
+
 // Models
-import Curse, { ICurse } from '../1.models/2_Curse';
-import Integer, { IInteger } from '../1.models/6_Integer';
-import Theme, { ITheme } from '../1.models/4_Theme';
-import Section, { ISection } from '../1.models/3_Section';
 import Task, { ITask } from '../1.models/5_Task';
+import Curse, { ICurse } from '../1.models/2_Curse';
+import Theme, { ITheme } from '../1.models/4_Theme';
+import Integer, { IInteger } from '../1.models/6_Integer';
+import Section, { ISection } from '../1.models/3_Section';
 
 //getsController/////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
@@ -181,14 +183,18 @@ export async function deleteController(req: Request, res: Response): Promise<Res
     //await Theme.deleteMany({ curse: id });
     //await Section.deleteMany({ curse: id });
     const taskss=await Task.find({ curse: id });
+    const curses=await Curse.find({ curse: id });
+    const units=await Theme.find({ curse: id });
+    const integers=await Integer.find({ curse: id });
+    const sections=await Section.find({ curse: id });
     //console.log(taskss)
 
 function deleteFiles(taskss){
   for (const file of taskss) {
-      if(file.archivo){
-    console.log(file.archivo) ;
+      if(file.img){
+    console.log(file.img) ;
     try {
-    fs.unlink(path.resolve(file.archivo));
+    fs.unlink(path.resolve(file.img));
     } catch (err) {
         console.error(err);
     }
@@ -200,18 +206,13 @@ await Task.deleteMany({ curse: id });
 if(taskss){
   deleteFiles(taskss);
 }
-/*
-    const Curseww = await Curse.findByIdAndRemove(id) as ICurse;
-    //const Curse = await Curse.findByIdAndRemove(id) as ICurse;
-    if (Curseww) {
-        try {
-            //fs.unlinkSync("files/tasks/" + file);
-            await fs.unlink(path.resolve(Curseww.img));
-        } catch (err) {
-            console.error(err);
-        }
-    }
-    */
+if(curses){
+  deleteFiles(taskss);
+}
+if(units){
+  deleteFiles(taskss);
+}
+
     return res.json({ message: 'Successfully deleted' });
 };
 

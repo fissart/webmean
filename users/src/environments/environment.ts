@@ -784,24 +784,116 @@ db.users.insertMany(    [
 )
 
 
+
+
+
+
+lilianaylas@esfapa.edu.pe
+rolandoquispeprado@esfapa.edu.pe
+juanlicas@esfapa.edu.pe
+mariamarquina@esfapa.edu.pe
+evelinasanchez@esfapa.edu.pe
+ezequielzarate@esfapa.edu.pe
+ladislaoparra@esfapa.edu.pe
+zenobiopalomino@esfapa.edu.pe
+kennethmartinez@esfapa.edu.pe
+belarminasolar@esfapa.edu.pe
+santiagoquispe@esfapa.edu.pe
+jesusprado@esfapa.edu.pe
+amandacordova@esfapa.edu.pe
+eleodoroalvarez@esfapa.edu.pe
+luisariste@esfapa.edu.pe
+constantinoccaico@esfapa.edu.pe
+julioarones@esfapa.edu.pe
+moisesanchahua@esfapa.edu.pe
+nancyasto@esfapa.edu.pe
+reynaldocabrera@esfapa.edu.pe
+josecanchari@esfapa.edu.pe
+juanchuchon@esfapa.edu.pe
+olimpiacordero@esfapa.edu.pe
+ricardomallqui@esfapa.edu.pe
+labslovmiranda@esfapa.edu.pe
+katiaoriundo@esfapa.edu.pe
+reyderquispe@esfapa.edu.pe
+williamrojas@esfapa.edu.pe
+edgarsabastizagal@esfapa.edu.pe
+richardsulca@esfapa.edu.pe
+saulsulla@esfapa.edu.pe
+roberttorre@esfapa.edu.pe
+teofilotorres@esfapa.edu.pe
+nancyviza@esfapa.edu.pe
+edwincconislla@esfapa.edu.pe
+rogerramos@esfapa.edu.pe
+einerjauregui@esfapa.edu.pe
+kattiaapcho@esfapa.edu.pe
+willianhinostroza@esfapa.edu.pe
+juanamorales@esfapa.edu.pe
+isaiascconislla@esfapa.edu.pe
+tomasenciso@esfapa.edu.pe
+celedoniagutierrez@esfapa.edu.pe
+mariopablo@esfapa.edu.pe
+carlosoriundo@esfapa.edu.pe
+davidmarmolejo@esfapa.edu.pe
+machurtado@esfapa.edu.pe
+fiorelaarones@esfapa.edu.pe
+netypayala@esfapa.edu.pe
+
 db.users.insertMany(    [
-{name:"Diana", email: "76582030@fismart.cf", password: "76582030", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
-{name:"Maricielo", email: "74352810@fismart.cf", password: "74352810", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
-{name:"Neidi", email: "75285203@fismart.cf", password: "75285203", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
-{name:"Julio Cesar", email: "70414223@fismart.cf", password: "70414223", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
-{name:"Ana", email: "71275210@fismart.cf", password: "71275210", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
-{name:"Diana", email: "77540087@fismart.cf", password: "77540087", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
-{name:"Jerson", email: "74196964@fismart.cf", password: "74196964", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
-{name:"Jackelin", email: "75781948@fismart.cf", password: "75781948", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
-{name:"Ani", email: "74564134@fismart.cf", password: "74564134", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
-{name:"Joe", email: "47534612@fismart.cf", password: "47534612", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
-{name:"Nemias", email: "70547814@fismart.cf", password: "70547814", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
-{name:"Zarella", email: "70406905@fismart.cf", password: "70406905", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
-{name:"Noemi", email: "70426401@fismart.cf", password: "70426401", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
-{name:"Jesús María", email: "72658071@fismart.cf", password: "72658071", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
-{name:"Jeffri", email: "75911739@fismart.cf", password: "75911739", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
-{name:"Eva", email: "75812771@fismart.cf", password: "75812771", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
-{name:"Carla", email: "70417745@fismart.cf", password: "70417745", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"", email: "77540087@fismart.cf", password: "77540087", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"", email: "74196964@fismart.cf", password: "74196964", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"", email: "75781948@fismart.cf", password: "75781948", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"", email: "74564134@fismart.cf", password: "74564134", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"", email: "47534612@fismart.cf", password: "47534612", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"", email: "70547814@fismart.cf", password: "70547814", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"lilianaylas@esfapa.edu.pe", email: "lilianaylas@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"rolandoquispeprado@esfapa.edu.pe", email: "rolandoquispeprado@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"juanlicas@esfapa.edu.pe", email: "juanlicas@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"mariamarquina@esfapa.edu.pe", email: "mariamarquina@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"evelinasanchez@esfapa.edu.pe", email: "evelinasanchez@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"ezequielzarate@esfapa.edu.pe", email: "ezequielzarate@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"ladislaoparra@esfapa.edu.pe", email: "ladislaoparra@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"zenobiopalomino@esfapa.edu.pe", email: "zenobiopalomino@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"kennethmartinez@esfapa.edu.pe", email: "kennethmartinez@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"belarminasolar@esfapa.edu.pe", email: "belarminasolar@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"santiagoquispe@esfapa.edu.pe", email: "santiagoquispe@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"jesusprado@esfapa.edu.pe", email: "jesusprado@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"amandacordova@esfapa.edu.pe", email: "amandacordova@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"eleodoroalvarez@esfapa.edu.pe", email: "eleodoroalvarez@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"luisariste@esfapa.edu.pe", email: "luisariste@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"constantinoccaico@esfapa.edu.pe", email: "constantinoccaico@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"julioarones@esfapa.edu.pe", email: "julioarones@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"moisesanchahua@esfapa.edu.pe", email: "moisesanchahua@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"nancyasto@esfapa.edu.pe", email: "nancyasto@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"reynaldocabrera@esfapa.edu.pe", email: "reynaldocabrera@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"josecanchari@esfapa.edu.pe", email: "josecanchari@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"juanchuchon@esfapa.edu.pe", email: "juanchuchon@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"olimpiacordero@esfapa.edu.pe", email: "olimpiacordero@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"ricardomallqui@esfapa.edu.pe", email: "ricardomallqui@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"labslovmiranda@esfapa.edu.pe", email: "labslovmiranda@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"katiaoriundo@esfapa.edu.pe", email: "katiaoriundo@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"reyderquispe@esfapa.edu.pe", email: "reyderquispe@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"williamrojas@esfapa.edu.pe", email: "williamrojas@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"edgarsabastizagal@esfapa.edu.pe", email: "edgarsabastizagal@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"richardsulca@esfapa.edu.pe", email: "richardsulca@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"saulsulla@esfapa.edu.pe", email: "saulsulla@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"roberttorre@esfapa.edu.pe", email: "roberttorre@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"teofilotorres@esfapa.edu.pe", email: "teofilotorres@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"nancyviza@esfapa.edu.pe", email: "nancyviza@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"edwincconislla@esfapa.edu.pe", email: "edwincconislla@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"rogerramos@esfapa.edu.pe", email: "rogerramos@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"einerjauregui@esfapa.edu.pe", email: "einerjauregui@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"kattiaapcho@esfapa.edu.pe", email: "kattiaapcho@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"willianhinostroza@esfapa.edu.pe", email: "willianhinostroza@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"juanamorales@esfapa.edu.pe", email: "juanamorales@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"isaiascconislla@esfapa.edu.pe", email: "isaiascconislla@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"tomasenciso@esfapa.edu.pe", email: "tomasenciso@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"celedoniagutierrez@esfapa.edu.pe", email: "celedoniagutierrez@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"mariopablo@esfapa.edu.pe", email: "mariopablo@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"carlosoriundo@esfapa.edu.pe", email: "carlosoriundo@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"davidmarmolejo@esfapa.edu.pe", email: "davidmarmolejo@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"machurtado@esfapa.edu.pe", email: "machurtado@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"fiorelaarones@esfapa.edu.pe", email: "fiorelaarones@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
+{name:"netypayala@esfapa.edu.pe", email: "netypayala@esfapa.edu.pe", password: "esfapa", rol:"3", foto:"", createdAt: ISODate("2022-04-16T17:10:46.123Z"), updatedAt: ISODate("2022-04-17T02:19:45.629Z")},
 ],
 )
 
@@ -893,9 +985,7 @@ db.wwws.update( {'_id':ObjectId('623bcd104e6f90b190a6d1d7')}, {$set:{'role':'New
 db.wwws.updateMany( { }, {$set:{'rol':'New MongoDB Tutorial', 'new2':'New MongoDB Tutorial'}} )
 ---------------------
 db.wwws.update( { '_id':ObjectId('623bcd104e6f90b190a6d1d8') }, {$set:{'rol':'New MongoDB Tutorial', 'new2':'New MongoDB Tutorial'}} )
-
 db.users.update( { 'name':'' }, {$set:{'rol':'1'}} )
-
 
 //eliminar un documento. Only one with ID
 db.wwws.update( {'_id':ObjectId('623bcd104e6f90b190a6d1d7')}, { $unset: { type: "" } } )

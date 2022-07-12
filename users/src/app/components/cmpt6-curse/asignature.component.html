@@ -122,7 +122,7 @@
                                 <button *ngIf="subItem.usertask.length==1 && subItem.time>DateNow" class="btn card-photo btn-outline-light shadow-none border-0" (click)="deletetask(subItem.usertask[0]._id)">Eliminar tarea</button>
                                 <div class="card bg-info border d-none">{{subItem.time}}--{{subItem.usertask.length}}</div>
                                 <button *ngIf="subItem.usertask.length!==0" class="btn btn-light shadow-none card-photo mb-1" (click)="open1(ww, subItem.usertask[0].task, $any(subItem)._id)">Tarea entregada</button>
-                                <button *ngIf="subItem.usertask.length!==0 && subItem.usertask[0].archivo" class="btn btn-info shadow-none card-photo mb-1" (click)="open2(www, subItem.usertask[0].archivo)">Archivo</button>
+                                <button *ngIf="subItem.usertask.length!==0 && subItem.usertask[0].img" class="btn btn-info shadow-none card-photo mb-1" (click)="open2(www, subItem.usertask[0].img)">Archivo</button>
                                 <p *ngIf="subItem.time<DateNow" class="margin-0 text-center bg-warning m-0 p-1 card">Venció la fecha de entrega {{subItem.time | date:'EEEE &starf; dd MMMM yyyy &starf;  hh:mm a' }}</p>
                                 <p *ngIf="subItem.time>DateNow" class="margin-0 bg-primary p-1 text-center m-0 card">Hasta--{{subItem.time | date:'EEEE &starf; dd MMMM yyyy &starf;  hh:mm a' }}</p>
                             </div>

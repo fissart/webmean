@@ -96,7 +96,7 @@
                                 <button class="btn shadow-none card-photo" (click)="open1(ww, $any(subItem).task)">Tarea asignada</button>
                                 <button *ngIf="subItem.usertask.length!==0" class="btn btn-warning card-photo shadow-none" (click)="open1(ww, subItem.usertask[0].task)">Tarea entregada</button>
                                 <button *ngIf="subItem.usertask.length==1 && $any(user)._id==iduserlocal" class="btn btn-light card-photo shadow-none" (click)="updatetask(subItem.usertask[0]._id)">Editar tarea</button>
-                                <button *ngIf="subItem.usertask.length!==0 && subItem.usertask[0].archivo" class="btn btn-warning shadow-none card-photo " (click)="open2(www, subItem.usertask[0].archivo)">Archivo</button>
+                                <button *ngIf="subItem.usertask.length!==0 && subItem.usertask[0].img" class="btn btn-warning shadow-none card-photo " (click)="open2(www, subItem.usertask[0].img)">Archivo</button>
 
                                     <div *ngFor="let www of subItem['usertask'] index as i">
                                         <div class="text-center text-light" *ngIf="$any(www).note">Nota {{www.note}}</div>

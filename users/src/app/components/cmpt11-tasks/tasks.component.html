@@ -25,7 +25,7 @@
       <div class="d-grid gap-1">
                 <input type="file" class="d-none" (change)="capturandoFile($event) " #www id="www">
 
-                <img  [src]="photoSelected || apiUrl+'/'+ $any(photo).archivo" class="m-auto w-25 cursorpoint img-fluid rounded" (error)="onImgError($event)" alt="No image" (click)="www.click()">
+                <img  [src]="photoSelected || apiUrl+'/'+ $any(photo).img" class="m-auto w-25 cursorpoint img-fluid rounded" (error)="onImgError($event)" alt="No image" (click)="www.click()">
                 <div *ngIf="photoSelected" class="bg-light text-center  border rounded">
                     {{name}} --- {{type}}
                 </div>
