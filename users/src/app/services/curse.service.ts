@@ -41,12 +41,15 @@ export class CurseService {
 
 
   getcurseuseronly(id:string) {
-//    return this.http.get<Photo>(`${environment.apiURL}/api/curses/getsControllerUser/${id}`);
-  //  return this.http.get<Photo[]>(`${environment.apiURL}/api/curses/Controller/${id}`);
-
           return this.http.get(`${environment.apiURL}/api/integer/Controllerintegeruser/${id}`);
-console.log(id)
+//console.log(id)
   }
+
+getsCurseTeacher(id:string) {
+        return this.http.get(`${environment.apiURL}/api/curses/ControllerCurseTeacher/${id}`);
+        console.log("Wwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
+
+}
 
   getPhoto(id: string) {
     return this.http.get<any>(`${this.URIw}/${id}`);
@@ -100,7 +103,7 @@ updateUnity(id: string, title: string, description: string,  task: string,  test
 
 
 saveinteger(iduser:string,idcurso:string,iduserteach:string){
-        //console.log(iduser, idcurso, iduserteach )
+        console.log(iduser, idcurso, iduserteach )
         return this.http.post<any>(`${environment.apiURL}/api/integer/Controller`, {'curse':idcurso, 'user':iduser, 'userteach':iduserteach});
     }
 

@@ -36,8 +36,8 @@ export class Svc27STDService {
   gets() {
   return this.http.get<any>(`${this.URI}`);
   }
-  getstd() {
-  return this.http.get<any>(`${environment.apiURL}/api/users/Controller`);
+  getstd(idcurso:string) {
+  return this.http.get<any>(`${environment.apiURL}/api/users/ControllerGetusers/${idcurso}`);
   }
   remove(id: string ) {
   return this.http.delete(`${this.URI}/${id}`);

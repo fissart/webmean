@@ -102,7 +102,7 @@ this.router.params.subscribe(params => {
 
 
   onImgError(event: any) {
-        event.target.src = './assets/negz.jpg'
+        event.target.src = './assets/negz.png'
     }
 capturandoFile(event: any) {
     const ww = event.target.files[0];

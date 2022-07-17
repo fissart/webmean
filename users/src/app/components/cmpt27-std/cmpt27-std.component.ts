@@ -54,7 +54,7 @@
     }
 
     onImgError(event: any) {
-    event.target.src = './assets/negz.jpg'
+    event.target.src = './assets/negz.png'
     }
 
     options = {
@@ -77,7 +77,7 @@
     err => console.log(err)
     )
     }
-
+/*
     getstdwww(){
     this.Service.getstd()
     .subscribe(
@@ -88,12 +88,12 @@
     err => console.log(err)
     )
     }
-
+*/
     ngOnInit(): void {
     this.router.params.subscribe(params => {
     console.log(localStorage.getItem('idcurso') || "" )
     this.gets()
-    this.getstdwww()
+    //this.getstdwww()
     });
     }
 

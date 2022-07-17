@@ -71,6 +71,7 @@ name: string = ""
 
     photointeger: any = [];
     newws: any = [];
+    CurseTeacher: any = [];
     integeruser: any = [];
 
 
@@ -81,7 +82,7 @@ name: string = ""
     longText = `This is long paragraph text containseverall words continued. An example for implementingdynamicallyy limit long text`;
 
     onImgError(event: any) {
-        event.target.src = './assets/negz.jpg'
+        event.target.src = './assets/www.webp'
     }
 
     public isCollapsed = false;
@@ -413,7 +414,18 @@ getintegersuser()
      this.CurseService.getcurseuseronly(localStorage.getItem('id') || "").subscribe(
             (res: any) => {
                 this.photointeger = res;
-                console.log(res);
+                console.log(res, "getcurseuseronly");
+            },
+            err => console.log(err)
+        )
+}
+
+getsCurseTeacher()
+{
+     this.CurseService.getsCurseTeacher(localStorage.getItem('id') || "").subscribe(
+            (res: any) => {
+                this.CurseTeacher = res[0].curses;
+                console.log(res, "getsCurseTeacher");
             },
             err => console.log(err)
         )
@@ -455,12 +467,14 @@ getnews(){
   }
 
     ngOnInit() {
+      this.Tw.setTitle('Inicio ESFAP');
       this.gets_news();
-
-        this.Tw.setTitle('this.photointeger[0].userw[0].name');
-
-        this.getintegersuser();
-        localStorage.removeItem('idcurso');
+      this.getintegersuser();
+      if(localStorage.getItem('rol')=="1" || localStorage.getItem('rol')=="2"){
+      this.getsCurseTeacher()
+      }
+      localStorage.removeItem('idcurso');
+      if(localStorage.getItem('rol')=="1"){
         this.CurseService.getPhotosUser(localStorage.getItem('id') || "").subscribe(
             (res: any) => {
                 this.integeruser = res;
@@ -468,6 +482,7 @@ getnews(){
             },
             err => console.log(err)
         )
+      }
     }
 
     goCurse(id: string) {

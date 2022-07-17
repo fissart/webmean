@@ -31,7 +31,7 @@
   private routerr: Router,
   private Service: Svc21APPService,
   private modal: NgbModal,
-  ) { } 
+  ) { }
   capturandoFile(event: any) {
   const ww = event.target.files[0];
   this.archivos = [];
@@ -55,7 +55,7 @@
   }
 
   onImgError(event: any) {
-  event.target.src = './assets/negz.jpg'
+  event.target.src = './assets/negz.png'
   }
 
   options = {

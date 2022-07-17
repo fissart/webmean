@@ -44,44 +44,34 @@
     </ng-template>
 
 
-    <div class="row m-0 d-flex justify-content-center align-items-center px-1">
-        <!--Items-->
-        <div class="col-md-12" *ngFor="let w of wwwww index as i">
-            <div *ngIf="$any(w).rol==$any(photos).rol || $any(photos).rol==1" class="cardnew_ p-1">
-                <div class="floatop">
-                   <div class="bg-primary">
+
+    <div *ngFor="let w of wwwww index as i">
+            <div *ngIf="$any(w).rol==$any(photos).rol || $any(photos).rol==1" class="justify-content-left align-items-center">
+                <div class="d-flex p-0">
+                    <img [src]="apiUrl+'/'+ $any(w).foto" (error)="onImgError($event)" class="wrapperest10">
+                    <div class="text-light p-1">
                             {{i+1}}. {{$any(w).name}} -----  {{$any(w).email}} -- {{$any(w).password}} --    {{$any(w).rol}} *** {{$any(w)._id}}
-                        </div>
-                    <button class="btn btn-outline-primary card-photo" (click)="open2(zzz, $any(w).foto)">Ampliar</button>
-                    <button *ngIf='$any(photos).rol == 1 || $any(photos)._id == $any(w)._id' class="btn btn-outline-info mx-1 card-photo" (click)="selectedUser($any(w)._id)">Editar</button>
-            <button *ngIf='$any(photos).rol == 1' class="btn btn-danger shadow-none" (click)="deleteUser($any(w)._id, $any(w).curse.length)">Delete usuario</button>
-            <button *ngIf='$any(photos).rol == 1 || $any(photos)._id == $any(w)._id' class="btn btn-info shadow-none" (click)="NewCurse($any(w)._id)">Nuevo curso</button>
-
-                    <div class="text-info">
-
+                      <div class="">
+                      <button class="btn btn-outline-primary card-photo" (click)="open2(zzz, $any(w).foto)">Show</button>
+                      <button *ngIf='$any(photos).rol == 1 || $any(photos)._id == $any(w)._id' class="btn btn-outline-info mx-1 card-photo" (click)="selectedUser($any(w)._id)">Edit</button>
+                      <button *ngIf='$any(photos).rol == 1' class="btn btn-danger shadow-none" (click)="deleteUser($any(w)._id, $any(w).curse.length)">Delete user</button>
+                      <button *ngIf='$any(photos).rol == 1 || $any(photos)._id == $any(w)._id' class="btn btn-info shadow-none" (click)="NewCurse($any(w)._id)">New curse</button>
+                      </div>
                     </div>
-
                 </div>
 
-                <img [src]="apiUrl+'/'+ $any(w).foto" class="wrapperest" (error)="onImgError($event)">
-
                 <div class="row m-0 d-flex justify-content-center align-items-center p-1">
-
                 <div class=" col-md-3 m-1 p-1" *ngFor="let item of w['integer']; let i=index" cdkDrag>
-                    <div class="cardnew_ border border-info">
                       <div *ngFor="let itemwww of item['curse']; let i=index" cdkDrag>
-                          <div class="p-0 text-light text-center">
+                          <div class="p-0 text-light text-center border">
                             {{itemwww.title}}
                           </div>
                       </div>
-                    </div>
-                  </div>
                 </div>
-
+                </div>
             </div>
 
             <div *ngIf="$any(w).rol==$any(photos).rol || $any(photos).rol==1" class="row m-0 d-flex justify-content-center align-items-center p-1">
-                <!--Subitems-->
                 <div class=" col-md-5 m-1 p-1" *ngFor="let subItem of w['curse']; let i=index" cdkDrag>
                     <div class="cardnew_ p-0">
                         <div class="text-rigth floatop">
@@ -98,14 +88,13 @@
                             </div>
                         </div>
                         <div *ngIf="subItem.img=='imagen'; else www">
-                            <img src="./assets/negz.jpg" class="imgcurse">
+                            <img src="./assets/negz.png" class="imgcurse">
                         </div>
                         <ng-template #www>
                             <img *ngIf="subItem.img" [src]="apiUrl+'/'+ subItem.img" class="imgcurse" (error)="onImgError($event)">
                         </ng-template>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
 

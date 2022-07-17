@@ -55,7 +55,7 @@
       }
 
       onImgError(event: any) {
-      event.target.src = './assets/negz.jpg'
+      event.target.src = './assets/negz.png'
       }
 
       options = {

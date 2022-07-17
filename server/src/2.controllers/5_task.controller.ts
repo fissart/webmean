@@ -14,7 +14,7 @@ export async function getsController(req: Request, res: Response): Promise<Respo
    const { ObjectId } = require("mongodb");
     const user = ObjectId(req.params.user);
     const curse = ObjectId(req.params.curse);
-    console.log(user, curse); 
+    console.log(user, curse);
     const Curses = await Curse.aggregate([
         {
             $match: {
@@ -34,7 +34,7 @@ export async function getsController(req: Request, res: Response): Promise<Respo
                             pipeline: [
                                 { $match: { $expr: { $eq: ["$unidad", "$$www"] } } },
                                 {
-                                $lookup: { 
+                                $lookup: {
                                     from: "tasks",
                                     let: { www: "$_id" },
                                     pipeline: [
@@ -77,17 +77,17 @@ export async function createController(req: Request, res: Response): Promise<Res
     console.log(req.file);
 //    const newCurse = '';
     if (req.file) {
-        const newCurse = { note: "", archivo:req.file.path, task, theme, unidad, curse, user };
+        const newCurse = { note: "", img:req.file.path, task, theme, unidad, curse, user };
     const userw = new Task(newCurse);
     await userw.save();
-    } else { 
+    } else {
     const newCurse = { note: "", task, theme, unidad, curse, user };
     const userw = new Task(newCurse);
     await userw.save();
-    }    
-          
+    }
+
     ///console.log(userw._id);
-    
+
     //    if (!req.file) return res.status(400).send("No files were uploaded!!");
 //    const newCurse = {archivo:req.file.path, task, theme, unidad, curse, user};
   //  const Cursew = new Curse(newCurse);
@@ -144,16 +144,16 @@ export async function deleteController(req: Request, res: Response): Promise<Res
     //await Opinion.deleteMany({ imageid: id });
     const Curseww = await Task.findByIdAndRemove(req.params.id) as ITask;
     //const Curse = await Curse.findByIdAndRemove(id) as ITask;
-    
+
     if (Curseww) {
         try {
             //fs.unlinkSync("files/tasks/" + file);
-            await fs.unlink(path.resolve(Curseww.archivo));
+            await fs.unlink(path.resolve(Curseww.img));
         } catch (err) {
             console.error(err);
         }
     }
-    
+
     return res.json({ message: 'Successfully deleted task' });
 };
 
@@ -164,11 +164,11 @@ export async function updateController(req: Request, res: Response): Promise<Res
     const { id } = req.params;
     const { task, note } = req.body;
     const updatedCurse = "";
-    if (req.file) {        
+    if (req.file) {
         const Cursew = await Task.findById(id) as ITask;
         if (Cursew) {
             try {
-                await fs.unlink(path.resolve(Cursew.archivo));
+                await fs.unlink(path.resolve(Cursew.img));
             } catch (err) {
                 console.error(err);
             }
@@ -176,7 +176,7 @@ export async function updateController(req: Request, res: Response): Promise<Res
         const updatedCurse = await Task.findByIdAndUpdate(id, {note, task, archivo: req.file.path });
     } else {
         const updatedCurse = await Task.findByIdAndUpdate(id, {note, task });
-    }   
+    }
     return res.json({
         message: 'Successfully updated',
         //updatedCurse

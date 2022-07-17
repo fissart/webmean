@@ -8,7 +8,7 @@
     <div class="modal-body bg-warning p-5">
         <!--<markdown [data]="text" katex [katexOptions]="options"></markdown>-->
         <ng-katex-html [html]="text"></ng-katex-html>
-        <img *ngIf="file.split('.').pop()=='png'||file.split('.').pop()=='jpg'||file.split('.').pop()=='jpeg'||file.split('.').pop()=='svg'||file.split('.').pop()=='webp'" [src]="apiUrl+'/'+ file" class="img-fluid w-100" (error)="onImgError($event)">
+        <img *ngIf="file && file.split('.').pop()=='png'||file.split('.').pop()=='jpg'||file.split('.').pop()=='jpeg'||file.split('.').pop()=='svg'||file.split('.').pop()=='webp'" [src]="apiUrl+'/'+ file" class="img-fluid w-100" (error)="onImgError($event)">
         <div class="border rounded">{{file}}</div>
         <ngx-doc-viewer *ngIf="file.split('.').pop()=='doc'"
         [url]="apiUrl+'/'+ file"
@@ -16,12 +16,12 @@
         style="width:100%;height:100vh;"
         ></ngx-doc-viewer>
 
-        <ngx-doc-viewer *ngIf="file.split('.').pop()=='docx' || file.split('.').pop()=='pptx'|| file.split('.').pop()=='ptx' || file.split('.').pop()=='xlsx'|| file.split('.').pop()=='xls'"
+        <ngx-doc-viewer *ngIf="file && file.split('.').pop()=='docx' || file.split('.').pop()=='pptx'|| file.split('.').pop()=='ptx' || file.split('.').pop()=='xlsx'|| file.split('.').pop()=='xls'"
         [url]="apiUrl+'/'+ file"
         viewer="google"
         style="width:100%;height:800px;"
         ></ngx-doc-viewer>
-        <ngx-extended-pdf-viewer    *ngIf="file.split('.').pop()=='pdf'"
+        <ngx-extended-pdf-viewer    *ngIf="file && file.split('.').pop()=='pdf'"
          [src]="apiUrl+'/'+ file"
          [height]="'500px'"
          ></ngx-extended-pdf-viewer>
@@ -42,21 +42,21 @@
 
 </div>
    <div class="modal-body bg-warning">
-    <img *ngIf="text.split('.').pop()=='png'||text.split('.').pop()=='jpg'||text.split('.').pop()=='jpeg'||text.split('.').pop()=='svg'" [src]="apiUrl+'/'+ text" class="img-fluid w-100" (error)="onImgError($event)">
+    <img *ngIf="text && text.split('.').pop()=='png'||text.split('.').pop()=='jpg'||text.split('.').pop()=='jpeg'||text.split('.').pop()=='svg'" [src]="apiUrl+'/'+ text" class="img-fluid w-100" (error)="onImgError($event)">
 
-    <ngx-doc-viewer *ngIf="text.split('.').pop()=='doc'"
+    <ngx-doc-viewer *ngIf="text && text.split('.').pop()=='doc'"
     [url]="apiUrl+'/'+ text"
     viewer="google"
     style="width:100%;height:100vh;"
     ></ngx-doc-viewer>
 
-    <ngx-doc-viewer *ngIf="text.split('.').pop()=='docx' || text.split('.').pop()=='pptx'|| text.split('.').pop()=='ptx' || text.split('.').pop()=='xlsx'|| text.split('.').pop()=='xls'"
+    <ngx-doc-viewer *ngIf="text && text.split('.').pop()=='docx' || text.split('.').pop()=='pptx'|| text.split('.').pop()=='ptx' || text.split('.').pop()=='xlsx'|| text.split('.').pop()=='xls'"
     [url]="apiUrl+'/'+ text"
     viewer="google"
     style="width:100%;height:100vh;"
     ></ngx-doc-viewer>
 
-    <ngx-extended-pdf-viewer    *ngIf="text.split('.').pop()=='pdf'"
+    <ngx-extended-pdf-viewer    *ngIf="text && text.split('.').pop()=='pdf'"
      [src]="apiUrl+'/'+ text"
      [height]="'500px'"
      ></ngx-extended-pdf-viewer>
@@ -76,15 +76,19 @@
     </div>
     <ng-template #main_content>
 
-        <div class="card border-0 p-2 justify-content-center align-items-center">
-            <div class="text-uppercase floatop h3  text-light rounded p-2">
+        <div class="card border-0 p-0 justify-content-center align-items-center">
+          <div class="floatop text-light">
+            <div class="text-uppercase h3  text-light">
                 {{photo.title}}
-            </div>
+              </div>
+                <span *ngIf="photouser.rol==1 || photouser.rol==2" class="">{{photo._id}}</span>
+              </div>
             <img *ngIf="photo.img" [src]="apiUrl+'/'+ $any(photo).img" class="imgcurse" (error)="onImgError($event)" alt="No image">
             <div class="mytest justify-content-center align-items-center">
               <div class="btn-group" role="group" aria-label="Basic example">
                 <button class="btn btn-info text-light card-photo" (click)="open1(ww, $any(photo).description,$any(photo).img)">Content</button>
                 <button *ngIf="photouser.rol==1 || photouser.rol==2" class="btn btn-light shadow-none card-photo" (click)="CreateSection(photo.user, photo._id)">Create unity</button>
+                <button *ngIf="photouser.rol==1 || photouser.rol==2" class="btn btn-warning shadow-none card-photo" (click)="std(photo._id)">Estudiantes</button>
                 <button *ngIf="photouser.rol==1 || photouser.rol==2" class="btn btn-info shadow-none card-photo" (click)="selectedCard(photo._id)">Edit curse</button>
               </div>
             </div>
@@ -134,6 +138,6 @@
         <h1 *ngIf="photo.description" class='bg-light text-center p-1 mb-1'>
         CARPETA DEL DOCENTE
         </h1>
-        <ng-katex-html [html]="photo.description"></ng-katex-html>
+        <ng-katex-html *ngIf="photo.description" [html]="photo.description"></ng-katex-html>
   </ng-template>
 </div>

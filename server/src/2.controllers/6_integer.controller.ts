@@ -21,7 +21,7 @@ export async function getsController(req: Request, res: Response): Promise<Respo
 export async function getupdateController(req: Request, res: Response): Promise<Response> {
     const { id } = req.params;
     const www = await Curse.findById(id);
-    console.log(id);
+    //console.log(id);
     return res.json(www);
 }
 
@@ -111,6 +111,7 @@ export async function getController(req: Request, res: Response): Promise<Respon
                 as: "userw",
             },
         },
+        {'$sort': {  'userw.name': 1 }},
         {
             $lookup: {
                 from: "curses",
@@ -158,7 +159,7 @@ export async function getController(req: Request, res: Response): Promise<Respon
             },
         },
     ]);
-    console.log(integers);
+  //  console.log(integers);
     return res.json(integers);
 }
 
@@ -180,7 +181,7 @@ export async function getControlleruser(req: Request, res: Response): Promise<Re
         {
             $lookup: {
                 from: "users",
-                let: { www: "$user" },
+                let: { www: "$userteach" },
                 pipeline: [
                     { $match: { $expr: { $eq: ["$_id", "$$www"] } } },
                 ],
@@ -198,7 +199,7 @@ export async function getControlleruser(req: Request, res: Response): Promise<Re
             },
         },
     ]);
-    console.log(integers);
+//    console.log(integers);
     return res.json(integers);
 }
 

@@ -4,11 +4,11 @@
 <div class="height"></div>
 
    <div class="container d-flex justify-content-center align-items-center text-light">
-    <form class="border col-md-8 p-2" (submit)="updatePhoto(title, description, password, rol)">
+    <form class="row p-1" (submit)="updatePhoto(title, description, password, rol)">
+      <div class="col-md-7 p-0">
         <div class="form-group mb-2">
             <label class="form-label">Nombre</label>
             <input type="text" class="form-control shadow-none" placeholder="Photo's Title" [value]="$any(photow).name" #title required>
-        </div>
         <div class="form-group mb-2">
             <label class="form-label">Correo</label>
             <input type="text" class="form-control shadow-none" placeholder="Photo's Title" [value]="$any(photow).email" #description required>
@@ -19,21 +19,22 @@
         </div>
         <!--
         <div [ngClass]="[$any(photow).rol==1 ? 'form-group mb-2':'form-group mb-2 d-none']">-->
-            <div [ngClass]="[userrol==1 || userrol==2  ? 'form-group mb-2' :'form-group mb-2 d-none']">
+            <div [ngClass]="[userrol==1  ? 'form-group mb-2' :'form-group mb-2 d-none']">
             <label for="exampleFormControlInput1" class="form-label">Rol</label>
             <input type="text" class="form-control shadow-none" placeholder="Rol" [value]="$any(photow).rol" #rol>
          </div>
-        <div class="d-grid gap-1">
-
+       </div>Cel: {{$any(photow).celular}}, Sexo: {{$any(photow).sexo}}, Carrera: {{$any(photow).carreramension}}, Ciclo: {{$any(photow).ciclo}}, Rol: {{$any(photow).rol}}
+       </div>
+        <div class="col-md-5 p-0 d-flex justify-content-center align-items-center text-light">
         <input type="file" accept="image/*" class="d-none" (change)="capturandoFile($event)" #photoInput>
-        <img [src]="photoSelected || apiUrl+'/'+ $any(photow).foto" (error)="onImgError($event)" class="img-fluid" alt="No image" class="m-auto w-25 cursorpoint" (click)="photoInput.click()">
-
-        <button class="btn btn-info my-1 shadow-none" [disabled]="loading">{{ loading=='false' ? 'Cargando '+value+'%':
+        <img *ngIf="userrol == '1'" [src]="photoSelected || apiUrl+'/'+ $any(photow).foto" (error)="onImgError($event)" class="img-fluid" alt="No image" class="m-auto w-100 cursorpoint" (click)="photoInput.click()">
+        <img *ngIf="userrol == '2' || userrol == '3'" [src]="apiUrl+'/'+ $any(photow).foto" (error)="onImgError($event)" class="img-fluid" alt="No image" class="m-auto w-100">
+      </div>
+        <button class="btn btn-info shadow-none mt-1" [disabled]="loading">{{ loading=='false' ? 'Cargando '+value+'%':
             'Actualizar'}}</button>
         <button class="btn btn-success mb-1 shadow-none d-none" (click)="deletePhoto($any(photow)._id)">
             Delete
         </button>
-</div>
 
     </form>
 </div>

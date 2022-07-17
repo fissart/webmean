@@ -24,7 +24,7 @@ router.route('/Controllersign/:re/:uu')
     .get(signin)
 
 //All users only
-router.route('/Controller')
+router.route('/ControllerGetusers/:id')
     .get(getSController)
 
 //router.route('/Controller')

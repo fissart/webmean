@@ -40,7 +40,7 @@ export class AsignatureComponent implements OnInit {
       outHtml!:string;
 
     onImgError(event: any) {
-        event.target.src = './assets/negz.jpg'
+        event.target.src = './assets/www.webp'
     }
     iduser = localStorage.getItem('id');
     apiUrl = environment.apiURL;
@@ -273,9 +273,14 @@ edittheme(id: string) {
 	};
 
 selectedCard(id: string) {
-		this.routerr.navigate(['/cursoup', id]);
-		console.log(id);
-	};
+  this.routerr.navigate(['/cursoup', id]);
+  console.log(id);
+};
+
+std(id: string) {
+	this.routerr.navigate(['/integers', id]);
+	console.log(id);
+};
 
     errasesection(id: string, ntemas: string ) {
     if (ntemas == '0') {

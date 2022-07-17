@@ -12,8 +12,31 @@ import Tasks, { ITask } from '../1.models/5_Task';
 ///////////////////////////////////////////////////////////////////////////
 
 export async function getSController(req: Request, res: Response): Promise<Response> {
-    const Curse = await User.find({rol:'3'});
-    return res.json(Curse);
+    //const Curse = await User.find({rol:'3'}).sort({name:1});
+    const { ObjectId } = require("mongodb");
+    const id = ObjectId(req.params.id);
+    const curse = ObjectId(id);
+    const usersww = await User.aggregate([
+    {
+        $match: {
+            'rol': '3',
+        },
+    },
+    {
+      $lookup: {
+        from: 'integers',
+        let: { userId: '$_id' },
+        pipeline: [
+            {$match: { $expr: { $and: [{ $eq: ["$user", "$$userId"] }, { $eq: ["$curse",  curse] },] } }},
+            //{'$sort': {  'name': 1 }},
+            //{'$limit': 10},
+        ],
+        as: 'www'
+      }
+    },
+    {$sort: {  'www.name': 1 }},
+  ])
+    return res.json(usersww);
 }
 
 //Usuarios opiniones 1-2/////////////////////////////////////////////////////////////////////////
@@ -142,7 +165,7 @@ export async function deleteController(req: Request, res: Response): Promise<Res
 export async function updateController(req: Request, res: Response): Promise<Response> {
     const { id } = req.params;
     const { name, email, password, rol } = req.body;
-    console.log(req.file)
+//console.log(req.file)
     const updatedCurse = "";
     if (req.file) {
         const Curse = await User.findById(id) as IUser;

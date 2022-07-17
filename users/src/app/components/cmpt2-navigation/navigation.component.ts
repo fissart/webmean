@@ -20,7 +20,7 @@ export class NavigationComponent implements OnInit {
     public photo: any = [];
 public isCollapsed = true;
 
- public idcurso: any = "";
+ //public idcurso: any = "";
  public rol: any = "";
  public user: any = "";
 
@@ -142,7 +142,7 @@ public isCollapsed = true;
   ngOnInit() {
   //this.imguser = localStorage.getItem('imguser');
             //console.log( localStorage.getItem('idcurso'),"wwwwwwwwwwwwww");
-            this.idcurso = localStorage.getItem('idcurso');
+//            this.idcurso = localStorage.getItem('idcurso');
 
 			if (localStorage.getItem('id')) {
 			this.userService.getUser()
@@ -174,7 +174,7 @@ public isCollapsed = true;
   }
   */
   onImgError(event: any) {
-    event.target.src = './assets/negz.jpg'
+    event.target.src = './assets/negz.png'
     //event.target.src = 'https://source.unsplash.com/random/800x800/?img=0'
   }
 

@@ -52,8 +52,6 @@ New refresh
     </div>
 </ng-template>
 
-<!--
--->
 <ng-template #www let-modal>
   <form class="container p-3" (submit)="updatenews(title, description, show)">
       <div class="row p-0">
@@ -123,23 +121,7 @@ New refresh
 
 
 <div class="container">
-    <div class="container text-center">
-        <div class="container d-flex justify-content-center align-items-center">
-            <!--
-               <app-themes></app-themes>
-               -->
-        </div>
 
-        <button *ngIf="user" class="btn card-photo mt-2 shadow-none text-light" (click)="open1(ww, 'www', 'www')">
-            <mat-icon svgIcon="integrate" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
-            Integrarse a un curso
-        </button>
-
-        <button *ngIf="rol=='1'" class="btn card-photo mt-2 shadow-none text-light" (click)="createnews()">
-            <mat-icon svgIcon="integrate" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
-            New's {{ newws ? newws.length : null }}
-        </button>
-    </div>
 
     <swiper *ngIf="user && newws.length!==0" [config]="config" [effect]="'coverflow'" [grabCursor]="true" [loop]="true" [spaceBetween]='0' [autoplay]="{delay: 2000,
       disableOnInteraction: true}" [centeredSlides]="true" [slidesPerView]="'auto'" [coverflowEffect]="{
@@ -185,6 +167,40 @@ New refresh
 
         </ng-template>
     </swiper>
+
+    <div class="container text-center">
+        <div class="container d-flex justify-content-center align-items-center">
+            <!--
+               <app-themes></app-themes>
+               -->
+        </div>
+
+        <button *ngIf="user" class="btn card-photo btn-info mt-2 shadow-none text-light" (click)="open1(ww, 'www', 'www')">
+            <mat-icon svgIcon="integrate" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon> Integrase a un curso
+        </button>
+
+        <button *ngIf="rol=='1'" class="btn card-photo btn-success mt-2 shadow-none text-light" (click)="createnews()">
+            <mat-icon svgIcon="integrate" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
+            New's {{ newws ? newws.length : null }}
+        </button>
+    </div>
+
+    <div class="container my-2 bg-light border rounded">
+    <div class="h3">
+      RECOMENDACIONES DE USO
+    </div>
+
+    <div class="bg -info">
+      El usuario y contraseña es de uso personal, su divulgación y/o perdida no es responsabilidad de la ESFAP "FGPA".
+      Utiliza el sistema con responsabilidad.
+      Usted declara y garantiza que toda la información que proporciona a la ESFAP "FGPA". es correcta, completa y vigente, y se compromete a actualizar dicha información cuando sea necesario. También admite que cualquier información proporcionada por usted no violará ninguna ley o reglamento, ni infringirá los derechos de terceros
+      Cerrar sesión siempre que termine de usar el sistema.
+      Cualquier cambio en el sistema se le comunicará al correo electrónico que registró.
+      La ESFAP "FGPA" no envía ningún tipo de publicidad mediante correo electrónico.
+      El contenido de la ESFAP "FGPA" y otras obras de autoría que se encuentran en el servicio, o forman parte del mismo (colectivamente, el "Contenido"), están protegidos por las leyes aplicables de derechos de autor y los tratados internacionales de derechos de autor, así como por otras leyes y tratados de propiedad intelectual. Usted no puede realizar copias no autorizadas o utilizar ninguna parte del Contenido. Todos los títulos y derechos de autor del contenido y del servicio (incluyendo, entre otros, imágenes, fotografías, animaciones, vídeo, audio, código, artículos, texto y "documentos", incorporados al Servicio), son propiedad de la ESFAP “FGPA” o sus licenciadores. Usted acepta cumplir con todas las leyes aplicables sobre protección de derechos de autor en relación con el uso del servicio y del contenido por parte de usted. Además de lo estipulado en estos términos de servicio, la ESFAP “FGPA” podrá adoptar medidas adecuadas para proteger los derechos de autor en el contenido.
+    </div>
+    </div>
+
 
     <div *ngIf="user && newws.length!==0 && rol=='1'" class="container text-center text-light">
         NEW'S
@@ -232,8 +248,8 @@ New refresh
       </div>
     </div>
 
-    <div *ngIf="user && newws.length!==0 && rol=='1'" class="container text-center mt-3 text-light">
-        CURSOS
+    <div *ngIf="user && photointeger.length!==0" class="container text-center mt-3 text-light">
+        CURSOS ESTUDIANTE
     </div>
 <div *ngIf="user && photointeger.length!==0" class="row d-flex justify-content-center align-items-center bg-warning">
   <div class="d-none h5 text-dark justify-content-center w-100">
@@ -243,7 +259,7 @@ New refresh
       <div class='card border-0 text-align-right text-light'>
         <img [src]="apiURL+'/'+photo.curse[0].img" class="img-card-top imgcurse" (error)="onImgError($event)">
         <img [src]="apiURL+'/'+photo.userw[0].foto" class="wrapperest5" (error)="onImgError($event)">
-        <div class="text-center text-uppercase">
+        <div class="text-center text-uppercase text-info">
           {{photo.curse[0].title}}
         </div>
         <div class="mytesttop w-100 text-center">
@@ -263,14 +279,41 @@ New refresh
     </div>
 </div>
 
-    <div *ngIf="rol=='1'" class="row d-flex justify-content-center align-items-center">
 
+<div *ngIf="user && CurseTeacher.length!==0" class="container text-center mt-3 text-light">
+    CURSOS DOCENTE
+</div>
+<div *ngIf="user && CurseTeacher.length!==0 ||  rol=='2'" class="row d-flex justify-content-center align-items-center bg-warning">
+<div class="d-none h5 text-dark justify-content-center w-100">
+Tus cursos
+</div>
+<div class="col-md-4 p-2" *ngFor="let photo of CurseTeacher index as i">
+  <div class='card border-0 text-align-right text-light'>
+    <img [src]="apiURL+'/'+photo.img" class="img-card-top imgcurse" (error)="onImgError($event)">
+    <div class="text-center text-uppercase text-info">
+      {{photo.title}}
+    </div>
+    <div class="mytesttop w-100 text-center">
+        <button class="btn btn-primary shadow-none card-photo" (click)="goCurse( $any(photo)._id)">
+            <mat-icon svgIcon="go" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
+            Ir al curso
+        </button>
+      </div>
+    </div>
+
+
+</div>
+</div>
+<div *ngIf="user && rol=='1'" class="container text-center mt-3 text-light">
+    CURSOS ALL
+</div>
+    <div *ngIf="rol=='1'" class="row d-flex justify-content-center align-items-center">
         <div class="col-md-4 p-2" *ngFor="let photo of integeruser index as i">
-            <div [ngClass]="[photo.integer.length > 0 ? 'cardnew_ text-align-right text-light' : 'cardnew text-align-right']">
+            <div class='cardnew text-align-right text-light'>
                 <div class="card-header h5 text-center text-uppercase text-light">
                     {{photo.title}}
                 </div>
-                <div class="card-body">
+                <div class="card-body text-info">
                     <img *ngIf="photo.img" [src]="apiURL+'/'+photo.img" class="img-card-top imgcurse" (error)="onImgError($event)">
                     <img *ngIf="photo.user.length>0" [src]="apiURL+'/'+photo.user[0].foto" class="img-card-top wrapperest5" (error)="onImgError($event)"> {{$any(photo).integers.length}}
                 </div>
@@ -312,7 +355,6 @@ New refresh
         <ng-template swiperSlide><img src="../assets/img8.jpg" /></ng-template>
         <ng-template swiperSlide><img src="../assets/img9.jpg" /></ng-template>
     </swiper>
-
       <div class="container bg-info border rounded p-2 h2 text-center">
 PORTAL INSTITUCIONAL
     </div>

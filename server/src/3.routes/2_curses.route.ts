@@ -11,16 +11,16 @@ import {
     deleteController,
     getsController,
     getsControllerUser,
-    //createController2, 
+    //createController2,
     //updateController2
-    //createOpinion, 
-    //delete_Opinion, 
+    //createOpinion,
+    //delete_Opinion,
 } from '../2.controllers/2_curses.controller'
 
 
 router.route('/Controller')
     .post(upload.single('image'), createController)
-    .get(getsController); 
+    .get(getsController);
 
 router.route('/Controller/:id')
     .get(getupdateController)
@@ -29,6 +29,9 @@ router.route('/Controller/:id')
 
 router.route('/getsControllerUser/:id')
     .get(getsControllerUser)
+
+router.route('/ControllerCurseTeacher/:id')
+    .get(getsController);
 
 
 //Inicio

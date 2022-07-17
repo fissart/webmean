@@ -1,3 +1,7 @@
+promedios
+nomina(cursos-estudiantes-)
+
+
 uploads:
 books
 collections

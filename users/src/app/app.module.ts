@@ -62,6 +62,7 @@ import { Cmpt35MESADEPARTESComponent } from './components/cmpt35-mesadepartes/cm
 import { Cmpt36HORARYComponent } from './components/cmpt36-horary/cmpt36-horary.component';
 import { Cmpt37SILABOSComponent } from './components/cmpt37-silabos/cmpt37-silabos.component';
 import { Cmpt38NOTASComponent } from './components/cmpt38-notas/cmpt38-notas.component';
+import { Cmpt39AverageComponent } from './components/cmpt39-average/cmpt39-average.component';
 //import { NgxMarkdownItModule } from "ngx-markdown-it";
 //import { NgxMarkdownItConfig } from "ngx-markdown-it";
 
@@ -108,6 +109,7 @@ import { Cmpt38NOTASComponent } from './components/cmpt38-notas/cmpt38-notas.com
   Cmpt36HORARYComponent,
   Cmpt37SILABOSComponent,
   Cmpt38NOTASComponent,
+  Cmpt39AverageComponent,
   	],
 	imports: [
 		BrowserModule,

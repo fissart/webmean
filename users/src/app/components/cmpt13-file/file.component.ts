@@ -41,7 +41,7 @@ export class FileComponent implements OnInit {
     public textt: string = "";
 
   onImgError(event: any) {
-        event.target.src = './assets/negz.jpg'
+        event.target.src = './assets/negz.png'
     }
     constructor(private TaskService: TaskService, private router: ActivatedRoute, private routerr: Router,
              private modal: NgbModal,  private Service: UsersService) { }

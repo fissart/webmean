@@ -5,6 +5,7 @@ import path from 'path'
 
 
 // Models
+import User, { IUser } from '../1.models/1_User';
 import Task, { ITask } from '../1.models/5_Task';
 import Curse, { ICurse } from '../1.models/2_Curse';
 import Theme, { ITheme } from '../1.models/4_Theme';
@@ -17,27 +18,32 @@ export async function getsController(req: Request, res: Response): Promise<Respo
     const { ObjectId } = require("mongodb");
     const id = ObjectId(req.params.id);
     const user = ObjectId(id);
-    const Curses = await Curse.aggregate([
+    const Curses = await User.aggregate([
+      {
+          $match: {
+              _id: user,
+          },
+      },
         {
             $lookup: {
-                from: "users",
-                let: { www: "$user" },
+                from: "curses",
+                let: { www: "$_id" },
                 pipeline: [
-                    { $match: { $expr: { $eq: ["$_id", "$$www"] } } }
-                ],
-                as: "user",
-            },
+                    { $match: { $expr: { $eq: ["$user", "$$www"] } } },
+                    {
+                        $lookup: {
+                            from: "integers",
+                            let: { curse: "$_id" },
+                            pipeline: [
+                                { $match: { $expr: { $eq: ["$curse", "$$curse"] } } }
+                            ],
+                            as: "integers",
+                        },
 
-        },{
-            $lookup: {
-                from: "integers",
-                let: { curse: "$_id" },
-                pipeline: [
-                    { $match: { $expr: { $eq: ["$curse", "$$curse"] } } }
+                    },
                 ],
-                as: "integer",
+                as: "curses",
             },
-
         },
     ]);
 
@@ -101,16 +107,15 @@ export async function getsControllerUser(req: Request, res: Response): Promise<R
 export async function getupdateController(req: Request, res: Response): Promise<Response> {
     const { id } = req.params;
     const www = await Curse.findById(id);
-    //    console.log(www)
+    //console.log(www)
     return res.json(www);
 }
-
 
 //createController/////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
 export async function   createController(req: Request, res: Response): Promise<Response> {
     const { title, description, user } = req.body;
-    console.log(req);
+    //console.log(req);
     //    if (!req.file) return res.status(400).send("No files were uploaded!!");
     const newCurse = { title, description, user, img: "imagen" };
     const Cursew = new Curse(newCurse);
@@ -126,7 +131,7 @@ export async function getController(req: Request, res: Response): Promise<Respon
     const { ObjectId } = require("mongodb");
     const curse = ObjectId(req.params.id);
     const user = ObjectId(req.params.idw);
-    console.log(curse,user)
+    //console.log(curse,user)
     const Curseuser = await Curse.aggregate([
         {
             $match: {
@@ -178,41 +183,57 @@ export async function getController(req: Request, res: Response): Promise<Respon
 export async function deleteController(req: Request, res: Response): Promise<Response> {
     const { ObjectId } = require("mongodb");
     const id = ObjectId(req.params.id);
+
+    const curses = await Curse.findById(id) as ICurse;
+    if (curses) {
+      try {
+        await fs.unlink(path.resolve(curses.img));
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
     await Curse.deleteMany({ _id: id });
     await Integer.deleteMany({ curse: id });
-    //await Theme.deleteMany({ curse: id });
-    //await Section.deleteMany({ curse: id });
+    await Section.deleteMany({ curse: id });
     const taskss=await Task.find({ curse: id });
-    const curses=await Curse.find({ curse: id });
-    const units=await Theme.find({ curse: id });
-    const integers=await Integer.find({ curse: id });
-    const sections=await Section.find({ curse: id });
+    const themes=await Theme.find({ curse: id });
+    //const units=await Section.find({ curse: id });
     //console.log(taskss)
 
-function deleteFiles(taskss){
+
+function deleteFilesTasks(taskss){
   for (const file of taskss) {
       if(file.img){
-    console.log(file.img) ;
+    //console.log(file.img) ;
     try {
     fs.unlink(path.resolve(file.img));
     } catch (err) {
         console.error(err);
     }
 }
-
 };
 }
 await Task.deleteMany({ curse: id });
 if(taskss){
-  deleteFiles(taskss);
-}
-if(curses){
-  deleteFiles(taskss);
-}
-if(units){
-  deleteFiles(taskss);
+  deleteFilesTasks(taskss);
 }
 
+function deleteFilesThemes(themes){
+  for (const file of themes) {
+      if(file.img){
+    //console.log(file.img) ;
+    try {
+    fs.unlink(path.resolve(file.img));
+    } catch (err) {
+        console.error(err);
+    }
+}};
+}
+await Theme.deleteMany({ curse: id });
+if(themes){
+  deleteFilesThemes(themes);
+}
     return res.json({ message: 'Successfully deleted' });
 };
 

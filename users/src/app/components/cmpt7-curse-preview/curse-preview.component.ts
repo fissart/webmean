@@ -24,7 +24,7 @@ export class PhotoPreviewComponent implements OnInit {
     };
   onImgError(event: any) {
 //		event.target.src = 'https://source.unsplash.com/random/1200x1000/?img=0'
-event.target.src = './assets/negz.jpg'
+event.target.src = './assets/negz.png'
 	}
 
   apiUrl = environment.apiURL;
