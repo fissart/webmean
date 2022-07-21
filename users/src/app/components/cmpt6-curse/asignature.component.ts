@@ -40,7 +40,7 @@ export class AsignatureComponent implements OnInit {
       outHtml!:string;
 
     onImgError(event: any) {
-        event.target.src = './assets/www.webp'
+        event.target.src = './assets/www_.jpg'
     }
     iduser = localStorage.getItem('id');
     apiUrl = environment.apiURL;
@@ -89,10 +89,16 @@ str = `"Euler\'s identity $e^{i\\pi}+1=0$ is a beautiful formula in $\\RR^2$. $$
     "tolerance": 0,
     "classes": {
       "initial": "animated",
-      "pinned": "bounceInDown",
-      "unpinned": "bounceOutUp"
-    }
-  };
+      //"pinned": "flipInX",
+      //"unpinned": "flipOutX"
+      //"pinned": "bounceInDown",
+      //"unpinned": "bounceOutUp"
+      //"pinned": "swingInX",
+      //"unpinned": "swingOutX"
+      "pinned": "slideDown",
+      "unpinned": "slideUp"
+  }
+    };
 
 totalPages!: number;
   page: number = 1;

@@ -18,17 +18,25 @@ export class PhotoPreviewComponent implements OnInit {
     "tolerance": 0,
     "classes": {
       "initial": "animated",
-      "pinned": "flipInX",
-      "unpinned": "flipOutX"
-    }
+      //"pinned": "flipInX",
+      //"unpinned": "flipOutX"
+      //"pinned": "bounceInDown",
+      //"unpinned": "bounceOutUp"
+      //"pinned": "swingInX",
+      //"unpinned": "swingOutX"
+      "pinned": "slideDown",
+      "unpinned": "slideUp"
+  }
     };
   onImgError(event: any) {
 //		event.target.src = 'https://source.unsplash.com/random/1200x1000/?img=0'
-event.target.src = './assets/negz.png'
+event.target.src = './assets/upload.png'
 	}
 
   apiUrl = environment.apiURL;
   id!: string;
+  type: string = ""
+  name: string = ""
   photo:  any = [];
   public archivos: any = [];
   public photoSelected!: string | ArrayBuffer | null;
@@ -81,6 +89,8 @@ markdown!: string;
     this.archivos.push(ww);
     //console.log(event.target.files);
     if (event.target.files[0]) {
+      this.type = event.target.files[0].type
+      this.name = event.target.files[0].name
       const reader = new FileReader();
       reader.onload = e => this.photoSelected = reader.result;
       reader.readAsDataURL(event.target.files[0]);

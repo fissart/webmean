@@ -86,10 +86,10 @@
             <img *ngIf="photo.img" [src]="apiUrl+'/'+ $any(photo).img" class="imgcurse" (error)="onImgError($event)" alt="No image">
             <div class="mytest justify-content-center align-items-center">
               <div class="btn-group" role="group" aria-label="Basic example">
-                <button class="btn btn-info text-light card-photo" (click)="open1(ww, $any(photo).description,$any(photo).img)">Content</button>
-                <button *ngIf="photouser.rol==1 || photouser.rol==2" class="btn btn-light shadow-none card-photo" (click)="CreateSection(photo.user, photo._id)">Create unity</button>
+                <button class="btn btn-info text-light card-photo" (click)="open1(ww, $any(photo).description,$any(photo).img)">Contenido</button>
+                <button *ngIf="photouser.rol==1 || photouser.rol==1" class="btn btn-light shadow-none card-photo" (click)="CreateSection(photo.user, photo._id)">Crear unidad</button>
                 <button *ngIf="photouser.rol==1 || photouser.rol==2" class="btn btn-warning shadow-none card-photo" (click)="std(photo._id)">Estudiantes</button>
-                <button *ngIf="photouser.rol==1 || photouser.rol==2" class="btn btn-info shadow-none card-photo" (click)="selectedCard(photo._id)">Edit curse</button>
+                <button *ngIf="photouser.rol==1 || photouser.rol==2" class="btn btn-info shadow-none card-photo" (click)="selectedCard(photo._id)">Subir registro</button>
               </div>
             </div>
         </div>

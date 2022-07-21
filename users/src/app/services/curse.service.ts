@@ -114,9 +114,12 @@ saveinteger(iduser:string,idcurso:string,iduserteach:string){
   }
 
 
-    getintegers(id: string){
-        return this.http.get(`${environment.apiURL}/api/integer/Controllerintegerscurse/${id}`);
-    }
+  getintegers(id: string){
+      return this.http.get(`${environment.apiURL}/api/integer/Controllerintegerscurse/${id}`);
+  }
+  getintegersaverage(id: string){
+      return this.http.get(`${environment.apiURL}/api/integer/Controllerintegersaverage/${id}`);
+  }
 
 //URI2 = environment.apiURL + '/api/wwu'
   getPhotouser(iduser: string) {

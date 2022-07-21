@@ -53,16 +53,15 @@
                             {{i+1}}. {{$any(w).name}} -----  {{$any(w).email}} -- {{$any(w).password}} --    {{$any(w).rol}} *** {{$any(w)._id}}
                       <div class="">
                       <button class="btn btn-outline-primary card-photo" (click)="open2(zzz, $any(w).foto)">Show</button>
-                      <button *ngIf='$any(photos).rol == 1 || $any(photos)._id == $any(w)._id' class="btn btn-outline-info mx-1 card-photo" (click)="selectedUser($any(w)._id)">Edit</button>
+                      <button *ngIf='$any(photos).rol == 1 || $any(photos)._id == $any(w)._id' class="btn btn-outline-info card-photo" (click)="selectedUser($any(w)._id)">Edit</button>
                       <button *ngIf='$any(photos).rol == 1' class="btn btn-danger shadow-none" (click)="deleteUser($any(w)._id, $any(w).curse.length)">Delete user</button>
                       <button *ngIf='$any(photos).rol == 1 || $any(photos)._id == $any(w)._id' class="btn btn-info shadow-none" (click)="NewCurse($any(w)._id)">New curse</button>
                       </div>
                     </div>
                 </div>
-
                 <div class="row m-0 d-flex justify-content-center align-items-center p-1">
-                <div class=" col-md-3 m-1 p-1" *ngFor="let item of w['integer']; let i=index" cdkDrag>
-                      <div *ngFor="let itemwww of item['curse']; let i=index" cdkDrag>
+                <div class=" col-md-3 m-1 p-1" *ngFor="let item of w['integer']; let i=index" >
+                      <div *ngFor="let itemwww of item['curse']; let i=index" >
                           <div class="p-0 text-light text-center border">
                             {{itemwww.title}}
                           </div>
@@ -72,21 +71,21 @@
             </div>
 
             <div *ngIf="$any(w).rol==$any(photos).rol || $any(photos).rol==1" class="row m-0 d-flex justify-content-center align-items-center p-1">
-                <div class=" col-md-5 m-1 p-1" *ngFor="let subItem of w['curse']; let i=index" cdkDrag>
+                <div class=" col-md-5 m-1 p-1" *ngFor="let subItem of w['curse']; let i=index">
                     <div class="cardnew_ p-0">
-                        <div class="text-rigth floatop">
+                        <div class="text-rigth float_title">
                             <div class="h5 text-uppercase text-info">
-                                {{subItem.title}}
+                                {{subItem.title}} {{subItem.especialidad}}
                             </div>
                             <div>
                                 <!--Modal2-->
                                 <button class="btn btn-outline-primary card-photo shadow-none" (click)="open2(zzz, $any(subItem).img)">Ampliar</button>
-                                <button class="btn btn-outline-info card-photo shadow-none" (click)="open1(ww, $any(subItem).description)">Contenido</button>
+                                <button class="btn btn-info card-photo shadow-none" (click)="open1(ww, $any(subItem).description)">Contenido</button>
                                 <button class="btn btn-outline-light card-photo shadow-none" (click)="goCurse(subItem._id)">Ir al curso</button>
-                                <button *ngIf='$any(photos).rol==1||$any(photos)._id == $any(w)._id' class="btn btn-outline-light card-photo shadow-none" (click)="selectedCard(subItem._id)">Editar</button>
-                                <button *ngIf='$any(photos).rol==1||$any(photos)._id == $any(w)._id' class="btn btn-outline-light card-photo shadow-none" (click)="deleteCurse(subItem._id)">Borrar curso</button>
+                                <button *ngIf='$any(photos).rol==1||$any(photos)._id == $any(w)._id' class="btn btn-light card-photo shadow-none" (click)="selectedCard(subItem._id)">Editar</button>
+                                <button *ngIf='$any(photos).rol==1||$any(photos)._id == $any(w)._id' class="btn btn-warning card-photo shadow-none" (click)="deleteCurse(subItem._id)">Borrar curso</button>
                             </div>
-                        </div>
+          1              </div>
                         <div *ngIf="subItem.img=='imagen'; else www">
                             <img src="./assets/negz.png" class="imgcurse">
                         </div>

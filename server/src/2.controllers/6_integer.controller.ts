@@ -72,6 +72,47 @@ export async function createController(req: Request, res: Response): Promise<Res
 
 //getController/////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
+
+
+export async function getintegerController(req: Request, res: Response): Promise<Response> {
+    const { ObjectId } = require("mongodb");
+    const id = ObjectId(req.params.id);
+    const curso = ObjectId(id);
+    const integers = await Curse.aggregate([
+        {
+            $match: {
+                curse: curso,
+            },
+        },
+        {
+            $lookup: {
+                from: "users",
+                let: { www: "$user" },
+                pipeline: [
+                    { $match: { $expr: { $eq: ["$_id", "$$www"] } } },
+                    {
+                        $lookup: {
+                            from: "averages",
+                            let: { wwwww: "$_id" },
+                            pipeline: [
+                                {$match: { $expr: { $and: [{ $eq: ["$user", "$$www"] }, { $eq: ["$curse",  curso] },] } }},
+
+                            ],
+                            as: "averagge",
+                        },
+                    },
+                ],
+                as: "userw",
+            },
+        },
+        {'$sort': {  'userw.name': 1 }},
+    ]);
+  //  console.log(integers);
+    return res.json(integers);
+}
+
+//getController/////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 export async function getController(req: Request, res: Response): Promise<Response> {
     const { ObjectId } = require("mongodb");
     const id = ObjectId(req.params.id);

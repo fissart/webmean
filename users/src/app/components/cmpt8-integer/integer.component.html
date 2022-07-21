@@ -14,7 +14,7 @@
           <img [src]="apiURL+'/'+ textoimg" class="m-auto w-100 img-fluid" (error)="onImgError($event)">
         </div>
         <div class="bg-light text-center border rounded">
-    *        {{textoimg}}
+            {{textoimg}}
         </div>
         <ngx-doc-viewer *ngIf="textoimg && textoimg.split('.').pop()=='doc'"
         [url]="apiURL+'/'+ textoimg"
@@ -44,13 +44,61 @@
 
 <div class="container">
 
+
+
+
   <div>
     <!--<button (click)="generateExcel()"> Generate Excel</button>
     <button (click)="exportToExcel()" class="btn btn-light">Exportar a Excel</button>
   -->
+  <div class="h5 text-white">
+{{curse.title}}-{{curse.ciclo}}-Creditos:{{curse.credito}}-{{curse.especialidad}}
+</div>
+  <table id="season-tble">
+    <tr>
+    </tr>
+      <tr>
+        <th *ngIf="rol==1"></th>
+          <th>N</th>
+        <th>Apellidos y nombres</th>
+        <th>Promedio final</th>
+      </tr>
+    <tr *ngFor="let ww_w of integeraverage index as i">
+      <td *ngIf="rol==1">
+        <button *ngIf="rol==1" class="btn btn-warning shadow-none mt-1" (click)="erraseinteger( ww_w.userw[0]._id)">
+            Retirar del curso
+        </button>
+      </td>
+      <td>{{ i+1 }}
+      </td>
+      <td>{{ ww_w.userw[0].name }}</td>
+      <td *ngIf="rol==1 || rol==2" class="w-15">
+      <span *ngFor="let ww_ of ww_w['userw'] index as i">
+        <input *ngIf="ww_.averagge.length==0" type="text" class="form-control p-1 input-sm"  [disabled]="loading"  [value]=""
+        (blur)="onBlurMean($event, ww_._id, curse.title, curse.ciclo, curse.credito, curse.especialidad)">
+        <span *ngFor="let w of ww_['averagge'] index as i">
+          <input type="text" [ngClass]="[w.nota=='R' ? 'form-control p-1 bg-danger text-light' : w.nota=='L' ? 'form-control p-1 bg-success text-light' : 'form-control p-1 bg-info text-dark']"  [value]="w.nota" (blur)="onBlurMeanUpdate($event, w._id)">
+            <button *ngIf="ww_.averagge.length==2" class="btn btn-danger shadow-none p-0 my-1" (click)="delete_average(w._id)">Delete{{ww_.averagge.length}}</button>
+        </span>
+      </span>
+        <!--
+        <input type="number" class="form-control p-1"  [value]="i" (blur)="onBlurMean(
+        $event,
+        curse._id,
+        curse.title,
+        curse.ciclo,
+        curse.credito,
+        curse.especialidad)">
+          <input type="number" class="form-control p-1"  [value]="i" (blur)="onBlurMean($event, www.userw[0]._id,  www.cursse[0].title)">
+        -->
+      </td>
+    </tr>
+  </table>
+
+
+  <!--
     <table id="season-tble">
       <tr>
-      <!--
           <td rowspan="3">1st col</td> <td colspan="5">2nd col</td>
       </tr>
       <tr>
@@ -60,9 +108,9 @@
           <td>2nd col</td><td>wwwwwwwww</td>
       </tr>
       <tr>
-      -->
         <th>N</th>
         <th>Nombre</th>
+        <th>Promedio</th>
         <ng-container *ngFor="let www of themes index as i">
           <th *ngFor="let ww_ of www['themes'] index as i">{{ww_.title.substring(0,3)}}...</th>
         </ng-container>
@@ -70,36 +118,40 @@
       <tr *ngFor="let www of photo index as i">
         <td>{{ i+1 }} </td>
         <td>{{ www.userw[0].name }}</td>
-        <td>
-          <input *ngIf="rol==1 || rol==2" type="text" class="form-control p-1"  [value]="i" (blur)="onBlurMethod($event, www._id,  rol)">
-        </td>
-
         <ng-container *ngFor="let w of www['cursse'] index as i">
           <ng-container *ngFor="let ww of w['units'] index as i" class="text-info">
             <ng-container *ngFor="let wwwww of ww['themes'] index as i" class="text-success">
               <td *ngFor="let ww_ of wwwww['task'] index as i">{{ww_.note}}</td>
-            <!--
-          -->
+
         </ng-container>
         </ng-container>
         </ng-container>
+        <td *ngIf="rol==1 || rol==2">
+          <input type="number" class="form-control p-1"  [value]="i" (blur)="onBlurMean($event, www.userw[0]._id,  www.cursse[0].title, www.cursse[0].ciclo, www.cursse[0].credito, www.cursse[0].especialidad)">
+          <input type="number" class="form-control p-1"  [value]="i" (blur)="onBlurMean($event, www.userw[0]._id,  www.cursse[0].title)">       </td>
       </tr>
     </table>
+  -->
+
   </div>
 
-    <div class="row d-flex justify-content-center">
+  <div class="py-2"></div>
+
+    <div *ngIf="photo" class="row d-flex justify-content-center">
         <div [ngClass]="[www.userw[0]._id==user ? 'cardnew_ col-md-3 m-3 p-1':'cardnew col-md-3 m-3 p-1']" *ngFor="let www of photo index as i">
           <div class="text-center text-light">
-           {{i+1}}. {{www.userw[0].name}}
-             </div>
-             <div class="text-center text-info">
+              {{www.userw[0].name}}
+                </div>
+                <div class="d-none text-center text-info">
               DNI{{www.userw[0].email.substring(8,20)}}
                 </div>
             <button class="btn shadow-none p-0 my-1" (click)="open1($any(www).userw[0]._id)">
                 <img [src]="apiURL+'/'+www.userw[0].foto" class="img-card-top imgcurse" (error)="onImgError($event)">
-
             </button>
 
+            <div class="float text-center text-light">
+              {{i+1}}
+            </div>
 
 
 
@@ -112,7 +164,7 @@
                                       <div *ngFor="let wwwww of ww['themes'] index as i" [ngClass]="[wwwww.task.length ? 'col-md-5 rounded bg-info m-1 p-1':'col-md-5 rounded bg-light m-1 p-0']">
                                         <span  class="h9 d-none">{{i+1}}</span>
                                         <button *ngIf="rol==1 && !wwwww.task.length" class="btn btn-success p-0" (click)="savetask(wwwww._id, ww._id, w._id, www.userw[0]._id)">
-&#3065;                                        </button>
+                                        &#3065;                                        </button>
                                         <div class="row">
                                           <div *ngFor="let ww_ of wwwww['task'] index as i">
                                               <span *ngIf="ww_.archivo" class="text-dark">&starf; {{ww_.archivo.split('.').pop()!}}</span>

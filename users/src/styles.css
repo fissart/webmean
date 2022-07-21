@@ -4,7 +4,7 @@
 @import '~swiper/modules/pagination/pagination.min.css';
 
 body{
-  background: linear-gradient(to bottom, rgb(20,5,50), gray);
+  background: linear-gradient(to bottom, rgb(0,0,0), rgb(50,0,200));
 /*
 background: url("/assets/negz.jpg");
 */
@@ -36,7 +36,7 @@ color: white  !important;
 }
 
 .nav {
-  background: linear-gradient(to bottom, gray, rgb(20,5,50));
+  background: linear-gradient(to bottom, rgb(50,0,200), rgb(0,0,0));
   /*
   #b32134
    background: url("/assets/nav.jpg") center;
@@ -154,11 +154,12 @@ td {
 }
 
 tr:nth-child(even) {
-  background-color: rgb(250,250,200)
+  background-color: rgb(169, 169, 169)
 }
 
 tr:nth-child(odd) {
-  color:   white;
+  color:   black;
+  background-color: rgb(250,250,250)
 }
 
 th {
@@ -339,9 +340,9 @@ blockquote {
     word-wrap: break-word;
     border-radius: 0.25rem;
 background-size:     cover;
+box-shadow: 0 3px 5px rgba(0,0,0,0.5);
+/*
 background: url(https://cdn.elnacional.com/wp-content/uploads/2021/12/Poesia-fractal-parte-2-1024x480.jpg ) no-repeat center;
-    box-shadow: 0 3px 5px rgba(0,0,0,0.5);
-    /*
     background-color: rgba(250,100,200,.8);
     border: .15em solid rgb(212, 101, 203);
     background-clip: border-box;
@@ -420,6 +421,20 @@ background: url(https://cdn.elnacional.com/wp-content/uploads/2021/12/Poesia-fra
     padding: .5em;
     color: white;
     font-style: unset;
+    border: 0.2cm;
+}
+.float_title{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: .5em;
+    width: 95%;
+    z-index: 1;
+    transform: translate(-50%, -50%);
+    padding: .5em;
+    color: white;
+    font-style: unset;
+    background-color: rgba(250, 250, 250, 0.3);
     border: 0.2cm;
 }
 

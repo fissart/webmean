@@ -41,9 +41,11 @@
                     <h1>Loading...</h1>
                 </div>
                 <ng-template #www>
-                    <img [src]="photoSelected || apiUrl+'/'+ $any(photo).img" class="m-auto w-25 img-fluid" (error)="onImgError($event)" alt="No image" (click)="photoInput.click()">
+                    <img [src]="photoSelected || apiUrl+'/'+ $any(photo).img" class="m-auto w-25 img-fluid cursorpoint" (error)="onImgError($event)" alt="No image" (click)="photoInput.click()">
                 </ng-template>
-
+                <div *ngIf="photoSelected" class="bg-light text-center border rounded">
+                    {{name}}
+                </div>
                 <mat-progress-bar *ngIf="value > 0" color="accent" mode="determinate" [value]="value"></mat-progress-bar>
 
                 <button class="btn btn-info mt-1 fixed-bottom position-relative" [disabled]="loading">{{ loading=='false' ? 'Cargando '+value+'%':

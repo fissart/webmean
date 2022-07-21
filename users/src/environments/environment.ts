@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   title: 'Local Environment Heading',
-  apiURL: 'http://localhost:8000'
-  //apiURL:  'http://169.197.183.189:8000'
+  //apiURL: 'http://localhost:8000'
+  apiURL:  'http://169.197.183.189:8000'
 };
 
 /*
@@ -981,7 +981,7 @@ db.users.update( {_id: ObjectId('623cd42f0ad9cfb39677310e')}, { '$set': {"size.h
 db.wwws.update( {'_id':ObjectId('623bcd104e6f90b190a6d1d7')}, {$set:{'role':'New MongoDB Tutorial', 'rolewww':'New MongoDB Tutorial'}} )
 
 //Actualizar y agregar documentos nuevos a toda la collección
-db.wwws.updateMany( { }, {$set:{'rol':'New MongoDB Tutorial', 'new2':'New MongoDB Tutorial'}} )
+db.curses.updateMany( { }, {$set:{'ciclo':'V', 'credito':'3', 'especialidad':'G'}} )
 ---------------------
 db.wwws.update( { '_id':ObjectId('623bcd104e6f90b190a6d1d8') }, {$set:{'rol':'New MongoDB Tutorial', 'new2':'New MongoDB Tutorial'}} )
 db.users.update( { 'name':'' }, {$set:{'rol':'1'}} )
@@ -991,7 +991,7 @@ db.wwws.update( {'_id':ObjectId('623bcd104e6f90b190a6d1d7')}, { $unset: { type: 
 //All with field "type"
 db.wwws.updateMany( { }, { $unset: { type: "" } } )
 //Remover collection
-db.users.deletemany( {'rol':3)} )
+db.users.deletemany( {'rol':3} )
 
 
 mongodump --out w1.json --db fismart --host localhost  //descargar

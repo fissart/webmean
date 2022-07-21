@@ -22,14 +22,20 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 export class LandComponent implements OnInit {
 	equation: string = '\\sum_{i=1}^nx_i';
 	options = {
-		"offset": 0,
-		"tolerance": 0,
-		"classes": {
-			"initial": "animated",
-		"pinned": "bounceInDown",
-		"unpinned": "bounceOutUp"
-	}
-		};
+    "offset": 0,
+    "tolerance": 0,
+    "classes": {
+      "initial": "animated",
+      //"pinned": "flipInX",
+      //"unpinned": "flipOutX"
+      //"pinned": "bounceInDown",
+      //"unpinned": "bounceOutUp"
+      //"pinned": "swingInX",
+      //"unpinned": "swingOutX"
+      "pinned": "slideDown",
+      "unpinned": "slideUp"
+  }
+    };
 
 	todo = [
 		'Get to work',

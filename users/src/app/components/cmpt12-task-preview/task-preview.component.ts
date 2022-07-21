@@ -84,7 +84,7 @@ capturandoFile(event: any) {
     //console.log(event.target.files);
     if (event.target.files[0]) {
       this.type = event.target.files[0].type
-          this.name = event.target.files[0].name
+      this.name = event.target.files[0].name
           //console.log(event.target.files);
       const reader = new FileReader();
       reader.onload = e => this.photoSelected = reader.result;

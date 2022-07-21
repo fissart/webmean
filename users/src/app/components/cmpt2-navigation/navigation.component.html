@@ -1,8 +1,8 @@
-<nav class="nav navbar smart-scroll navbar-expand-xl">
+<nav class="nav navbar smart-scroll navbar-expand-md">
     <div class="container-fluid">
         <ng-container *ngIf="!authService.loggedIn(); else loggedInw">
             <a class="navbar-brand my-3 text-light" routerLink="/">
-              <div class="12 d-flex">
+              <div class="d-flex">
 
               <div class="px-3">
                 <img class="wrapperest12" src="/assets/esfap.png" alt="image">
@@ -27,7 +27,7 @@
         </ng-container>
         <ng-container>
             <a *ngIf="!isCollapsed" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation" class="navbar-brand p-0 text-light b-info " routerLink="/">
-                Fismart
+                ESFAP "FGPA"
             </a>
         </ng-container>
         <ng-template #loggedInw>
@@ -171,7 +171,7 @@
                     -->
                     <span *ngIf="photo">
 
-                    <li *ngIf='photo.rol==2 || photo.rol==1' class="nav-item">
+                    <li *ngIf='photo.rol==1 || photo.rol==1' class="nav-item">
                         <a class="nav-link" routerLink="/user">Docente</a>
                     </li>
                   </span>

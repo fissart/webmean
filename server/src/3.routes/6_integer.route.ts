@@ -11,6 +11,7 @@ import {
     updateController,
     deleteController,
 getControlleruser,
+getintegerController
 } from '../2.controllers/6_integer.controller'
 
 router.route('/Controller')
@@ -23,6 +24,11 @@ router.route('/Controller/:id')
 
 router.route('/Controllerintegerscurse/:id')
     .get(getController)
+
+    router.route('/Controllerintegersaverage/:id')
+        .get(getintegerController)
+
+
 router.route('/Controllerintegeruser/:id')
     .get(getControlleruser)
 

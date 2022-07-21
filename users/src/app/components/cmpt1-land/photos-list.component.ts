@@ -34,8 +34,14 @@ export class PhotosListComponent implements OnInit, AfterViewInit {
       "tolerance": 0,
       "classes": {
         "initial": "animated",
-      "pinned": "bounceInDown",
-      "unpinned": "bounceOutUp"
+        //"pinned": "flipInX",
+        //"unpinned": "flipOutX"
+        //"pinned": "bounceInDown",
+        //"unpinned": "bounceOutUp"
+        //"pinned": "swingInX",
+        //"unpinned": "swingOutX"
+        "pinned": "slideDown",
+        "unpinned": "slideUp"
     }
       };
 
@@ -82,7 +88,7 @@ name: string = ""
     longText = `This is long paragraph text containseverall words continued. An example for implementingdynamicallyy limit long text`;
 
     onImgError(event: any) {
-        event.target.src = './assets/www.webp'
+        event.target.src = './assets/www_.jpg'
     }
 
     public isCollapsed = false;
@@ -460,7 +466,7 @@ err => console.log(err)
 getnews(){
   this.CurseService.Getnews(localStorage.getItem('id') || "")
   .subscribe((res:any) => {
-    console.log(res, "ww_w");
+    console.log(res, "news");
     this.newws = res;
   }
   );
@@ -469,7 +475,7 @@ getnews(){
     ngOnInit() {
       this.Tw.setTitle('Inicio ESFAP');
       this.gets_news();
-      this.getintegersuser();
+      //this.getintegersuser();
       if(localStorage.getItem('rol')=="1" || localStorage.getItem('rol')=="2"){
       this.getsCurseTeacher()
       }
@@ -478,7 +484,7 @@ getnews(){
         this.CurseService.getPhotosUser(localStorage.getItem('id') || "").subscribe(
             (res: any) => {
                 this.integeruser = res;
-                console.log(res)
+                console.log(res, "integeruser")
             },
             err => console.log(err)
         )
@@ -568,7 +574,7 @@ getnews(){
                     this.CurseService.getPhotosUser(localStorage.getItem('id') || "").subscribe(
                 (res: any) => {
                     this.integeruser = res;
-                            this.getintegersuser();
+                            //this.getintegersuser();
 
                     console.log(res)
                 },

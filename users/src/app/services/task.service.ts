@@ -44,4 +44,17 @@ updatefiles(user:string, curse: string ) {
     return this.http.put<any>(`${environment.apiURL}/api/task/Controller/${user}/${curse}`, {user});
   }
 
+
+  create_average( nota: string, teacher: string, user: string, curse:string, title:string, ciclo:string, credito:string, especialidad:string) {
+    return this.http.post<any>(`${environment.apiURL}/api/AVERAGE`, { nota, teacher, user, curse, title, ciclo, credito, especialidad});
+  }
+  update_average(id: string, nota: string) {
+    return this.http.put<any>(`${environment.apiURL}/api/AVERAGE/${id}`, {nota});
+  }
+
+  delete_average(id: string) {
+    return this.http.delete<any>(`${environment.apiURL}/api/AVERAGE/${id}`);
+  }
+
+
 }

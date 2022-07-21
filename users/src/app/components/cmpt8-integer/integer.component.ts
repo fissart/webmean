@@ -82,8 +82,14 @@ worksheet["!cols"] = [ { wch: 5 },
     "tolerance": 0,
     "classes": {
       "initial": "animated",
-      "pinned": "bounceInDown",
-      "unpinned": "bounceOutUp"
+      //"pinned": "flipInX",
+      //"unpinned": "flipOutX"
+      //"pinned": "bounceInDown",
+      //"unpinned": "bounceOutUp"
+      //"pinned": "swingInX",
+      //"unpinned": "swingOutX"
+      "pinned": "slideDown",
+      "unpinned": "slideUp"
   }
     };
     constructor(
@@ -97,30 +103,36 @@ worksheet["!cols"] = [ { wch: 5 },
       private routerr: Router,
       private modal: NgbModal,
     ) { }
-    photo: any = [];
-    themes: any = [];
+
+    integeraverage : any = [];//integers
+    photo: any = [];//integers
+    themes: any = [];//themes
+    teacher: any = [];//themes
     apiURL = environment.apiURL;
     user = localStorage.getItem('id') || "";
+    rol: any = localStorage.getItem('rol') || "";
     curso = localStorage.getItem('idcurso') || "";
-    datastd: any = [];
+    datastd: any = [];//std
+    curse: any = [];//std
+    public archivos: any[] = [];
+    public loading: string = "";
 
     onImgError(event: any) {
         event.target.src = '../../../assets/negz.png'
     }
-        public rol: any = "";
 
         public text: string = "";
         public unitytitle: string = "";
         public themetitle: string = "";
         public texto: string = "";
         public textoimg: string = "";
-    getintegersuser()
+getintegersuser()
 {
   if (localStorage.getItem('id')) {
 			this.UsersService.getUser()
 				.subscribe(
 					(res: any) => {
-						this.rol = res.rol
+						this.teacher=res;
 					},
 					err => console.log(err)
 				);
@@ -130,13 +142,39 @@ worksheet["!cols"] = [ { wch: 5 },
 
 getCurse(){
   this.router.params.subscribe(params => {
-    //console.log(params['idcurso'])
-      this.curseService.getintegers(params['idcurso'])
+     this.curseService.getintegers(params['idcurso'])
           .subscribe(
               (res: any) => {
                   this.photo = res;
                   //console.log(res);
                   this.themes=res[0].cursse[0].units;
+              },
+              err => console.log(err)
+          )
+  });
+}
+
+getCurseOnly(){
+  this.router.params.subscribe(params => {
+     this.curseService.getPhoto(params['idcurso'])
+          .subscribe(
+              (res: any) => {
+                  this.curse = res;
+                  console.log(res);
+              },
+              err => console.log(err)
+          )
+  });
+}
+
+getIntegeraverage(){
+  this.router.params.subscribe(params => {
+     this.curseService.getintegersaverage(params['idcurso'])
+          .subscribe(
+              (res: any) => {
+                  this.integeraverage = res;
+                  console.log(res);
+  //                this.themes=res[0].cursse[0].units;
               },
               err => console.log(err)
           )
@@ -155,9 +193,12 @@ err => console.log(err)
 }
 
     ngOnInit(): void {
+      if(this.rol==1){
         this.getstdwww()
-        this.getintegersuser();
-        this.getCurse();
+      }
+        //this.getintegersuser();
+        this.getCurseOnly();
+        this.getIntegeraverage()
     }
 
 
@@ -172,7 +213,8 @@ integer(user : any) {
             .subscribe(
                 (res:any) => {
                   this.getstdwww();
-                  this.getCurse();
+                  this.getIntegeraverage()
+                  //this.getCurse();
                   //console.log(res);
                 },
                 err => console.log(err)
@@ -181,7 +223,7 @@ integer(user : any) {
 };
 
 erraseinteger(id: string) {
-    if (window.confirm('Desea salir del curso?')) {
+    if (window.confirm('Desea retirar del curso?')) {
         this.curseService.deleteinteger(id)
             .subscribe(res => {
                   this.getstdwww();
@@ -212,11 +254,11 @@ erraseinteger(id: string) {
             }
         };
 
-        public archivos: any[] = [];
 
     onBlurMethod(event:any, id: string, task: string) {
       this.task.updatetask(task, event.target.value, id, this.archivos[0])
           .subscribe((res: any) => {
+
 /*
             this.router.params.subscribe(params => {
             console.log(params['idcurso'])
@@ -234,9 +276,56 @@ erraseinteger(id: string) {
       return false;
       }
 
+onBlurMean(event:any, user: string, title: string, ciclo: string, credito: string, especialidad: string) {
+//this.loading = "true";
+//console.log(event.target.value,this.user,this.curso,title);
+//this.user==teacher
+this.loading = "false";
+//this.loading:true;
+      if(event.target.value<=20&&event.target.value>=0 || event.target.value=="R"  || event.target.value=="L"){
+        this.task.create_average(event.target.value, this.user, user, this.curso, title, ciclo, credito, especialidad)//curse ciclo carrera year user nombre
+            .subscribe((res: any) => {
+              this.loading = "";
+              this.getIntegeraverage();
+            });
+            return false;
+      }else{
+        alert("La calificación es vigesimal, L : Licencia o R : Retirado")
+        return false;
+      }
+      //this.loading = "false";
+
+      }
+      name = 'Angular';
+      onBlurMeanUpdate(event:any, id: string) {
+        console.log(event.target.value, id);
+        if(event.target.value<=20&&event.target.value>=0 || event.target.value=="R"  || event.target.value=="L"){
+      this.task.update_average(id, event.target.value)
+            .subscribe((res: any) => {
+              this.getIntegeraverage()
+            });
+      return false;
+      }else{
+        alert("La calificación es vigesimal, L : Licencia o R : Retirado")
+         this.name = ' ';
+        return false;
+      }
+
+      }
+
+      delete_average(id: string) {
+        this.task.delete_average( id )
+            .subscribe(
+                (res:any) => {
+                  this.getIntegeraverage()
+                },
+                err => console.log(err)
+            );
+        return false;
+}
+
 
       savetask(idtheme: string, idunity: string, idcurse: string, iduser: string) {
-
               this.task.savetask( "Tarea entregada sin archivo", idtheme, idunity, idcurse, iduser, this.archivos[0] )
                   .subscribe(
                       (res:any) => {
